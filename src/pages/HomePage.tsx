@@ -1,9 +1,10 @@
+import { Header } from "@/components/Header";
 
 export function HomePage(){
     return (
         <>
-
-            hello world
+        
+            <Header />
         </>
     )
 }
