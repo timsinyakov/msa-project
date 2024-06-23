@@ -1,0 +1,9 @@
+.navcontainer{
+    display: flex;
+    max-width: 800px;
+    justify-content: space-between;
+    margin: auto;
+}
+
+
+
