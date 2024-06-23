@@ -1,5 +1,6 @@
 import { Button, Flex, Grid, NavLink } from '@mantine/core';
 import styles from './Nav.module.css'
+import { useState } from 'react';
 
 type Link = {
     label: string;
@@ -31,10 +32,14 @@ type Link = {
   ]
 
 const Links: React.FC<{links: Link[]}> = ({links}) => {
+  
+  const [active, setActive] = useState(0);
+
     return ( 
       <div  className={styles.navcontainer}>
-        {links.map((link: Link) => (
-            <NavLink href={link.href} label={link.label} className={styles.navthing}/>      
+        {links.map((link, index) => (
+            <NavLink active={index === active}       onClick={() => setActive(index)}
+            styles={{label: {padding: '50px'}}} key={link.label} href={link.href} label={link.label}/>      
         ))}
       </div>
     )
