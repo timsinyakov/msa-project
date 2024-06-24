@@ -1,7 +1,17 @@
-import { Button, Checkbox, Group, Rating, TextInput } from '@mantine/core';
+import { Button, Checkbox, Fieldset, Group, NumberInput, Rating, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { number } from 'prop-types';
+import React from 'react';
 import { useState } from 'react';
+
+
+class Example extends React.Component {
+    constructor(props: number) {
+      super(props);
+      this.state = {value: 0}
+    }
+}
+
 
 export function Demo() {
 
@@ -18,26 +28,49 @@ export function Demo() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <form onSubmit={handleSubmit}>
-                <Group>
-                    Enjoyment 
-                    <Rating defaultValue={2} value={value} onChange={setValue} />
-                </Group>
+            <form onSubmit={handleSubmit} style={{marginTop: '70px'}}>
+                <Fieldset legend="Entry">
 
-                <Group>
-                    Challange 
-                    <Rating defaultValue={2} value={value} onChange={setValue} />
-                </Group>
+                    <NumberInput
+                        hideControls
+                        label="Distance:"
+                        suffix=" km"
+                        defaultValue={0}
+                        mt="md"
+                        allowNegative={false}
 
-                <Group>
-                    Effort 
-                    <Rating defaultValue={2} value={value} onChange={setValue} />
-                </Group>
+                    />
+                    <NumberInput
+                        hideControls
+                        label="Time:"
+                        suffix=" min"
+                        defaultValue={0}
+                        mt="md"
+                        allowNegative={false}
 
-                <Group>
-                    Soreness 
-                    <Rating defaultValue={2} value={value} onChange={setValue} />
-                </Group>
+                    />
+                    <br></br>
+                    <Group>
+                        Enjoyment 
+                        <Rating defaultValue={2} value={value} onChange={setValue} />
+                    </Group>
+
+                    <Group>
+                        Challange 
+                        <Rating defaultValue={2} value={value} onChange={setValue} />
+                    </Group>
+
+                    <Group>
+                        Effort 
+                        <Rating defaultValue={2} value={value} onChange={setValue} />
+                    </Group>
+
+                    <Group>
+                        Soreness 
+                        <Rating defaultValue={2} value={value} onChange={setValue} />
+                    </Group>
+                </Fieldset>
+
                 <Group justify="center" mt="md">
                     <Button type="submit">Submit</Button>
                 </Group>
