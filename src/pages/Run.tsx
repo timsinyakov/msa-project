@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Navbar } from "@/components/Nav";
-
+import { NewRun } from "@/components/NewRun"
 
 export function Run(){
     return (
@@ -8,6 +8,7 @@ export function Run(){
         
             <Header />
             <Navbar />
+            <NewRun />
         </>
     )
 }

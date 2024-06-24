@@ -1,0 +1,17 @@
+.runcontainer{
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.root{
+    outline: 2px red;
+
+}
+.awd{}
+
+
+.section{
+    color: red;
+    background-color: green;
+}
