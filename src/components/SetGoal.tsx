@@ -1,4 +1,4 @@
-import { Button, Slider } from "@mantine/core";
+import { Button, Fieldset, Slider } from "@mantine/core";
 import { useState } from "react";
 import goalStyle from './SetGoal.module.css'
 
@@ -12,11 +12,17 @@ export function SetGoal(){
     }
 
     return (    
+        
 
 
         <div className={goalStyle.goalcontainer}>
-            <p>Weekly</p>
-            <Slider value={value} onChange={setValue}
+            <h1>Set Weekly Goal</h1>
+            <Slider value={value} onChange={setValue} label={(value) => `${value} km`} labelTransitionProps={{
+          transition: 'skew-down',
+          duration: 150,
+          timingFunction: 'linear',
+        }}
+
             color="blue"
             marks={[
                 { value: 0, label: '0km' },
@@ -31,7 +37,7 @@ export function SetGoal(){
             />
 
             <Button variant="filled" style={{marginTop: '50px'}} onClick={() => handeClick(value)}>Set Goal</Button>
-    
+
 
         </div>
       );
