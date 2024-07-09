@@ -1,12 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/HomePage'; // Import the HomePage component
+import { HomePage } from './pages/HomePage' // Import the HomePage component
 import { Run } from './pages/Run';
 import { About } from './pages/About';
 import { Journal } from './pages/Journal';
 import { Goal } from './pages/Goal';
 import { Stats } from './pages/Stats';
-import { LoginPage } from './pages/Login';
-import AuthRoute from './components/AuthRoute';
 
 const router = createBrowserRouter([
   {
@@ -15,31 +13,23 @@ const router = createBrowserRouter([
   },
   {
     path: '/run',
-    element: <Run />,
+    element: <Run />
   },
   {
     path: '/about',
-    element: <About />,
+    element: <About />
   },
   {
     path: '/journal',
-    element: (
-      <AuthRoute>
-        <Journal />
-      </AuthRoute>
-    ),
+    element: <Journal />
   },
   {
     path: '/goal',
-    element: <Goal />,
+    element: <Goal />
   },
   {
     path: '/stats',
-    element: <Stats />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
+    element: <Stats />
   },
 ]);
 
