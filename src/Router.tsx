@@ -5,7 +5,7 @@ import { About } from './pages/About';
 import { Journal } from './pages/Journal';
 import { Goal } from './pages/Goal';
 import { Stats } from './pages/Stats';
-import { LoginPage } from './components/Login';
+import { LoginPage } from './pages/Login';
 import AuthRoute from './components/AuthRoute';
 
 const router = createBrowserRouter([

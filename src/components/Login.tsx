@@ -18,7 +18,7 @@ import { getAuth, signInWithPopup } from 'firebase/auth';
 
 export interface ILoginPageProps {}
 
-export const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
+export const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
   const auth = getAuth();
   const navigate = useNavigate();
   const [authing, setAuthing] = useState(false);
@@ -86,4 +86,4 @@ export const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
   );
 };
 
-export default LoginPage;
+export default Login;
