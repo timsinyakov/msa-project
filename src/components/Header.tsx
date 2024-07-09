@@ -66,7 +66,7 @@ export function Header() {
               <CgProfile />
             </Button>
           </Group>
-          <Text component={Link} to="/">
+          <Text component={Link} to="/" size="40px" style={{ padding: '30px' }}>
             RUN JOURNAL
           </Text>{' '}
           <Group>
