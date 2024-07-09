@@ -5,8 +5,8 @@ import { About } from './pages/About';
 import { Journal } from './pages/Journal';
 import { Goal } from './pages/Goal';
 import { Stats } from './pages/Stats';
-import { Login } from './components/Login';
-import { Register } from './components/Register';
+import { LoginPage } from './components/Login';
+import AuthRoute from './components/AuthRoute';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/journal',
-    element: <Journal />,
+    element: (
+      <AuthRoute>
+        <Journal />
+      </AuthRoute>
+    ),
   },
   {
     path: '/goal',
@@ -35,11 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/register',
-    element: <Register />,
+    element: <LoginPage />,
   },
 ]);
 

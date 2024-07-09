@@ -13,23 +13,30 @@ import {
 import classes from './Login.module.css';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase/config';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup } from 'firebase/auth';
 
-export function Login() {
+export interface ILoginPageProps {}
+
+export const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
+  const auth = getAuth();
+  const navigate = useNavigate();
+  const [authing, setAuthing] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const login = () => {
+  const login = async () => {
+    setAuthing(true);
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        console.log(userCredential.user.uid);
+        navigate('/run');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setError('Incorrect email or password');
+        console.log(error);
+        setAuthing(false);
       });
   };
 
@@ -72,4 +79,6 @@ export function Login() {
       </Paper>
     </Container>
   );
-}
+};
+
+export default LoginPage;
