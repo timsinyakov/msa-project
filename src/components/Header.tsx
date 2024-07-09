@@ -5,6 +5,7 @@ import {
   useComputedColorScheme,
   useMantineColorScheme,
   useMantineTheme,
+  Text,
 } from '@mantine/core';
 import styles from './Header.module.css';
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -65,8 +66,9 @@ export function Header() {
               <CgProfile />
             </Button>
           </Group>
-
-          <h1>RUN JOURNEY</h1>
+          <Text component={Link} to="/">
+            RUN JOURNAL
+          </Text>{' '}
           <Group>
             <Button
               variant="outline"
