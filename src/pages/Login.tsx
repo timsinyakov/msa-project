@@ -1,12 +1,12 @@
 import { Header } from '@/components/Header';
+import Login from '@/components/Login';
 import { Navbar } from '@/components/Nav';
-import AuthRoute from '@/components/AuthRoute';
 
-export function Journal() {
+export function LoginPage() {
   return (
     <>
       <Header />
-      <Navbar />
+      <Login />
     </>
   );
 }

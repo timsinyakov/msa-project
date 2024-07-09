@@ -19,8 +19,10 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@mantine/core": "7.10.2",
     "@mantine/hooks": "7.10.2",
+    "firebase": "^10.12.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
