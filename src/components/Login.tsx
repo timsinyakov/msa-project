@@ -33,6 +33,11 @@ export const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
       .then((userCredential) => {
         console.log(userCredential.user.uid);
         navigate('/run');
+        const user = auth.currentUser;
+        if (user) {
+          console.log('this is a user logged in ');
+          console.log(user.email);
+        }
       })
       .catch((error) => {
         console.log(error);

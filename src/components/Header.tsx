@@ -12,6 +12,7 @@ import { CgProfile } from 'react-icons/cg';
 import { LuDoorOpen } from 'react-icons/lu';
 import { MdLogin } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { getAuth, signOut } from 'firebase/auth';
 
 export function Header() {
   const { setColorScheme } = useMantineColorScheme();
@@ -20,6 +21,18 @@ export function Header() {
 
   const toggleColorScheme = () => {
     setColorScheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const auth = getAuth();
+  const thisthing = () => {
+    const user = auth.currentUser;
+    if (user) {
+      console.log(user.email);
+    }
+
+    signOut(auth)
+      .then(() => {})
+      .catch((error) => {});
   };
 
   return (
@@ -66,8 +79,7 @@ export function Header() {
             <Button
               variant="outline"
               color={theme === 'dark' ? 'white' : 'black'}
-              component={Link}
-              to="/logout"
+              onClick={() => thisthing()}
             >
               <LuDoorOpen />
             </Button>
