@@ -1,19 +1,7 @@
-.header_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-
-}
-
 .header_container Button {
-    position: absolute; /* positions the dark/light mode button to the right*/
-    right: 40px;
-    margin-top: 6.2px; /* aligns the button outline with the header */
-    width: 140px; /* ensures the button for dark/light mode stays the same width*/
+  margin-top: 6.2px; /* aligns the button outline with the header */
 }
 
 .header_container h1 {
-    font-size: 2.8em;
+  font-size: 2.8em;
 }
-
