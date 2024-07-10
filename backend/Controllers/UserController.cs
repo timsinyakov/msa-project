@@ -23,6 +23,20 @@ namespace msarun.Controllers
             return Ok(users);
         }
 
+        // GET: api/user/{id}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         
     }
 }
