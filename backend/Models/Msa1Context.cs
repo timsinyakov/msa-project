@@ -43,10 +43,7 @@ public partial class Msa1Context : DbContext
             entity.Property(e => e.Time).HasColumnName("time");
             entity.Property(e => e.UserId).HasColumnName("userId");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Runs)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Run_User");
+            
         });
 
         modelBuilder.Entity<User>(entity =>
