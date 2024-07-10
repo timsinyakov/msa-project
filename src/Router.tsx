@@ -15,7 +15,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/run',
-    element: <Run />,
+    element: (
+      <AuthRoute>
+        <Run />
+      </AuthRoute>
+    ),
   },
   {
     path: '/about',
@@ -31,11 +35,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/goal',
-    element: <Goal />,
+    element: (
+      <AuthRoute>
+        <Goal />
+      </AuthRoute>
+    ),
   },
   {
     path: '/stats',
-    element: <Stats />,
+    element: (
+      <AuthRoute>
+        <Stats />
+      </AuthRoute>
+    ),
   },
   {
     path: '/login',
