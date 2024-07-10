@@ -14,7 +14,10 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("msarun")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78a9679761a4ddd8700fb1acd8fee431dba5efbe")]
+
+
 [assembly: System.Reflection.AssemblyProductAttribute("msarun")]
 [assembly: System.Reflection.AssemblyTitleAttribute("msarun")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
