@@ -4604,7 +4604,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.EntityFrameworkCore >= 8.0.7",
-      "Microsoft.EntityFrameworkCore.Design >= 8.0.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.7",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.20.1",
@@ -4617,9 +4616,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\cs shit\\msa-project\\backend\\msarun.csproj",
-      "projectName": "msarun",
-      "projectPath": "E:\\cs shit\\msa-project\\backend\\msarun.csproj",
+      "projectUniqueName": "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj",
+      "projectName": "RunJournal",
+      "projectPath": "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
       "outputPath": "E:\\cs shit\\msa-project\\backend\\obj\\",
       "projectStyle": "PackageReference",
@@ -4657,12 +4656,6 @@
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.7, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.7, )"
           },
