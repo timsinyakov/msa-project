@@ -130,3 +130,14 @@ dist
 .pnp.*
 
 .DS_Store
+backend/obj/Debug/net8.0/refint/msarun.dll
+backend/obj/Debug/net8.0/ref/msarun.dll
+backend/obj/Debug/net8.0/msarun.sourcelink.json
+backend/obj/Debug/net8.0/msarun.pdb
+backend/obj/Debug/net8.0/msarun.dll
+backend/obj/Debug/net8.0/msarun.AssemblyInfoInputs.cache
+backend/obj/Debug/net8.0/msarun.AssemblyInfo.cs
+backend/obj/Debug/net8.0/apphost.exe
+backend/bin/Debug/net8.0/msarun.pdb
+backend/bin/Debug/net8.0/msarun.exe
+backend/bin/Debug/net8.0/msarun.dll
