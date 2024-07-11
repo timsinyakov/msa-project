@@ -50,6 +50,5 @@ namespace msarun.Controllers
             return CreatedAtAction(nameof(GetRunById), new { id = run.RunId }, run);
 }
 
-        
     }
 }
