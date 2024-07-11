@@ -40,8 +40,15 @@ namespace msarun.Controllers
             return Ok(run);
         }
 
-       
+       // POST: api/run
+        [HttpPost]
+        public async Task<ActionResult<Run>> CreateRun(Run run)
+        {
+            _context.Runs.Add(run);
+            await _context.SaveChangesAsync();
 
-        
+            return CreatedAtAction(nameof(GetRunById), new { id = run.RunId }, run);
+}
+
     }
 }

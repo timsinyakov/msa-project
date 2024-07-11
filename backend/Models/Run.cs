@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace msarun.Models;
@@ -21,5 +21,4 @@ public partial class Run
 
     public string? Note { get; set; }
 
-    public virtual User User { get; set; } = null!;
 }
