@@ -6,6 +6,8 @@
 
         public int UserId { get; set; }
 
+        public int Distance { get; set; }
+
         public int? Time { get; set; }
 
         public byte Enjoyment { get; set; }
