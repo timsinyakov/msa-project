@@ -11,20 +11,25 @@ import {
 import { number } from 'prop-types';
 import { useState } from 'react';
 import styles from './Run.module.css';
+import { getRunById } from '@/Services/RunService';
 export function Demo() {
   const [enjoyment, setEnjoyment] = useState(0);
   const [challenge, setChallenge] = useState(0);
   const [effort, setEffort] = useState(0);
   const [soreness, setSoreness] = useState(0);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const handeById = async () => {
+    event?.preventDefault();
     console.log({ enjoyment, challenge, effort, soreness });
+
+    const b = await getRunById(2);
+
+    console.log(b);
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <form onSubmit={handleSubmit} style={{ marginTop: '70px' }}>
+      <form onSubmit={handeById} style={{ marginTop: '70px' }}>
         <Fieldset legend="Entry">
           <NumberInput
             hideControls
@@ -43,26 +48,24 @@ export function Demo() {
             allowNegative={false}
           />
           <br></br>
-          <Group>
-            <Group>
-              Enjoyment
-              <Rating defaultValue={2} value={enjoyment} onChange={setEnjoyment} />
-            </Group>
+          <Group justify="space-between">
+            Enjoyment
+            <Rating defaultValue={2} value={enjoyment} onChange={setEnjoyment} />
+          </Group>
 
-            <Group>
-              Challenge
-              <Rating defaultValue={2} value={challenge} onChange={setChallenge} />
-            </Group>
+          <Group justify="space-between">
+            Challenge
+            <Rating defaultValue={2} value={challenge} onChange={setChallenge} />
+          </Group>
 
-            <Group>
-              Effort
-              <Rating defaultValue={2} value={effort} onChange={setEffort} />
-            </Group>
+          <Group justify="space-between">
+            Soreness
+            <Rating defaultValue={2} value={soreness} onChange={setSoreness} />
+          </Group>
 
-            <Group>
-              Soreness
-              <Rating defaultValue={2} value={soreness} onChange={setSoreness} />
-            </Group>
+          <Group justify="space-between">
+            Effort
+            <Rating defaultValue={2} value={effort} onChange={setEffort} />
           </Group>
         </Fieldset>
 
