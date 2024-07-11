@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Runs } from '../Models/Runs';
-import { getRuns, getRunById as fetchRunById } from '../Services/RunService';
+import { getRuns, getRunById as fetchRunById, addRun as createRun } from '../Services/RunService';
 
-export const useUsers = () => {
+export const useRuns = () => {
   const [run, setRun] = useState<Runs[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,5 +31,14 @@ export const useUsers = () => {
     }
   };
 
-  return { run, loading, error, getRunById };
+  const addRun = async (run: Runs) => {
+    try {
+      const newRun = await createRun(run);
+      setRun((prevRuns) => [...prevRuns, newRun]);
+    } catch (err) {
+      setError('Failed to add run');
+    }
+  };
+
+  return { run, loading, error, getRunById, addRun, useRuns };
 };

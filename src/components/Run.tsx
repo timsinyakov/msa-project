@@ -11,20 +11,34 @@ import {
 import { number } from 'prop-types';
 import { useState } from 'react';
 import styles from './Run.module.css';
-import { getRunById } from '@/Services/RunService';
+import { useRuns } from '@/Hooks/useRuns'; // Import useRuns
+
+import { addRun, getRunById } from '@/Services/RunService';
 export function Demo() {
   const [enjoyment, setEnjoyment] = useState(0);
   const [challenge, setChallenge] = useState(0);
   const [effort, setEffort] = useState(0);
   const [soreness, setSoreness] = useState(0);
 
-  const handeById = async () => {
-    event?.preventDefault();
+  const { addRun } = useRuns(); // Call useRuns to get addRun
+
+  const handeById = async (event: React.FormEvent) => {
+    event.preventDefault();
     console.log({ enjoyment, challenge, effort, soreness });
 
-    const b = await getRunById(2);
+    const newRun = {
+      RunId: 113,
+      UserId: 2,
+      Time: 42,
+      Enjoyment: 2,
+      Difficulty: 3,
+      Pain: 4,
+      Effort: 5,
+      Note: 'this note should work',
+    };
 
-    console.log(b);
+    const addedRun = await addRun(newRun);
+    console.log(addedRun);
   };
 
   return (
