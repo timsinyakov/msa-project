@@ -11,5 +11,7 @@ namespace RunJournal.Data
         }
 
         public DbSet<Run> Runs { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
