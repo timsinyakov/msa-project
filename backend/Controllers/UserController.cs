@@ -26,6 +26,47 @@ namespace RunJournal.Controllers
             return Ok(users);
         }
 
+        [HttpPost]
+        public async Task<ActionResult<List<User>>> AddUser(User newUser)
+        {
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
+                
+            return Ok(await _context.Users.ToListAsync());
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<List<User>>> UpdateUser(User updatedUser)
+        {
+            var dbUser = await _context.Users.FindAsync(updatedUser.Id);
+            if (dbUser is null)
+            {
+                return NotFound("User not found.");
+            }
+            dbUser.UserUID = updatedUser.UserUID;
+            dbUser.goal = updatedUser.goal;
+            
+            await _context.SaveChangesAsync();
+
+     
+
+            return Ok(await _context.Users.ToListAsync());
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<List<User>>> DeleteUser(int id)
+        {
+            var user = await _context.Users.FindAsync(id);
+            if (user is null)
+            {
+                return NotFound("User not found.");
+            }
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Users.ToListAsync());
+        }
+
        
 
 
