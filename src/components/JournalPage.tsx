@@ -1,24 +1,25 @@
 import { Runs } from '@/Models/Runs';
-import { getRuns } from '@/Services/RunService';
 import { Button, Center, Group, SimpleGrid, Slider, Stack, Text } from '@mantine/core';
 import { useState } from 'react';
 import styles from './JournalPage.module.css';
+import { use } from 'chai';
+
+import { useRuns } from '../Hooks/useRuns';
 
 export function JournalPage() {
-  const [runs, setRuns] = useState({
-    id: 1,
-    userId: 1,
-    distance: 0,
-    time: 23,
-    enjoyment: 1,
-    difficulty: 2,
-    pain: 3,
-    effort: 4,
-    note: 'great run',
-  });
+  const { getRunsByUser, userRuns } = useRuns(); // Assuming useRuns returns these
+
+  const [distance, setDistance] = useState();
+  const [time, setTime] = useState();
+  const [enjoyment, setEnjoyment] = useState();
+  const [difficulty, setDifficulty] = useState();
+  const [pain, setPain] = useState();
+  const [effort, setEffort] = useState();
+  const [note, setNote] = useState();
+
   const handleSubmit = async () => {
-    const allRuns = await getRuns();
-    console.log(runs);
+    await getRunsByUser(2);
+    console.log(userRuns);
   };
 
   return (
@@ -45,7 +46,7 @@ export function JournalPage() {
         </div>
       </Center>
       <Button onClick={handleSubmit}> get runs</Button>
-      <Text>{JSON.stringify(runs)}</Text>
+      <Text>y</Text>
     </>
   );
 }
