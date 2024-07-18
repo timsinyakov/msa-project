@@ -15,6 +15,12 @@ export const getUserById = async (id: number): Promise<Users> => {
   return data;
 };
 
+export const getUserByUID = async (uid: string): Promise<Users> => {
+  const response = await fetch(`${apiUrl}/User/user${uid}`);
+  const data = await response.json();
+  return data;
+};
+
 export const updateUser = async (user: Users): Promise<Users[]> => {
   const response = await fetch(`${apiUrl}/User`, {
     method: 'PUT',
