@@ -7,3 +7,8 @@
   border-style: solid; /* Add this line */
   border-width: 1px; /* Optional: Adjust the width as needed */
 }
+
+.runContainer {
+  max-width: 150px; /* Adjust as needed */
+  overflow-wrap: break-word;
+}

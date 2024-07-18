@@ -1,4 +1,5 @@
 export interface Users {
-  id: number;
-  email: string;
+  Id: number;
+  UserUID: string;
+  goal: number;
 }

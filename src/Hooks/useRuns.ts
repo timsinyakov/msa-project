@@ -5,7 +5,7 @@ import { getRuns, getRunsByUserId as fetchRunById, getRunsByUserId } from '../Se
 export const useRuns = () => {
   const [runs, setRun] = useState<Runs[]>([]);
 
-  const [userRuns, setUserRuns] = useState<Runs[]>();
+  const [userRuns, setUserRuns] = useState<Runs[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -24,14 +24,14 @@ export const useRuns = () => {
     fetchRuns();
   }, []);
 
-  // const getRunsByUser = async (id: number) => {
-  //   try {
-  //     const runFetch = await getRunsByUserId(id);
-  //     setUserRuns(runFetch);
-  //   } catch (err) {
-  //     setError('Failed to fetch run');
-  //   }
-  // };
+  const getRunsByUser = async (id: number) => {
+    try {
+      const runFetch = await getRunsByUserId(id);
+      setUserRuns(runFetch);
+    } catch (err) {
+      setError('Failed to fetch run');
+    }
+  };
 
-  return { runs, loading, error, userRuns };
+  return { runs, loading, error, userRuns, getRunsByUser };
 };
