@@ -7,44 +7,49 @@ import {
   NumberInput,
   Fieldset,
   Flex,
+  Textarea,
 } from '@mantine/core';
 import { number } from 'prop-types';
 import { useState } from 'react';
 import styles from './Run.module.css';
-import { useRuns } from '@/Hooks/useRuns'; // Import useRuns
+import { Runs } from '../Models/Runs';
+import { eventMap } from '@testing-library/user-event/dist/types/event/eventMap';
+import { useRuns } from '../Hooks/useRuns';
 
 export function Demo() {
+  const { addRun } = useRuns();
+
   const [enjoyment, setEnjoyment] = useState(0);
-  const [challenge, setChallenge] = useState(0);
+  const [difficulty, setDifficulty] = useState(0);
   const [effort, setEffort] = useState(0);
-  const [soreness, setSoreness] = useState(0);
+  const [pain, setPain] = useState(0);
+  const [time, setTime] = useState(0);
+  const [distance, setDistance] = useState(0);
+  const [note, setNote] = useState('');
 
-  const { addRun } = useRuns(); // Call useRuns to get addRun
-
-  const handeById = async (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log({ enjoyment, challenge, effort, soreness });
-
-    const newRun = {
+  const handeById = async () => {
+    event?.preventDefault();
+    console.log('hi');
+    // Assuming addRun expects an object with these properties
+    const a = await addRun({
       id: 0,
       userId: 2,
-      distance: 123,
-      time: 42,
-      enjoyment: 2,
-      difficulty: 3,
-      pain: 4,
-      effort: 5,
-      note: 'this note should wor aaaaa k',
-    };
+      time: time,
+      enjoyment: enjoyment,
+      difficulty: difficulty,
+      pain: pain,
+      effort: effort,
+      distance: distance,
+      note: note,
+    });
 
-    const addedRun = await addRun(newRun);
-    console.log(addedRun);
+    console.log(a);
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <form onSubmit={handeById} style={{ marginTop: '70px' }}>
-        <Fieldset legend="Entry">
+      <form onSubmit={handeById} style={{ marginTop: '70px', width: '330px' }}>
+        <Fieldset legend="New Run" radius={10}>
           <NumberInput
             hideControls
             label="Distance:"
@@ -52,6 +57,8 @@ export function Demo() {
             defaultValue={0}
             mt="md"
             allowNegative={false}
+            value={distance}
+            onChange={(value) => setDistance(Number(value))}
           />
           <NumberInput
             hideControls
@@ -60,6 +67,8 @@ export function Demo() {
             defaultValue={0}
             mt="md"
             allowNegative={false}
+            value={time}
+            onChange={(value) => setTime(Number(value))}
           />
           <br></br>
           <Group justify="space-between">
@@ -68,19 +77,29 @@ export function Demo() {
           </Group>
 
           <Group justify="space-between">
-            Challenge
-            <Rating defaultValue={2} value={challenge} onChange={setChallenge} />
-          </Group>
-
-          <Group justify="space-between">
-            Soreness
-            <Rating defaultValue={2} value={soreness} onChange={setSoreness} />
+            Difficulty
+            <Rating defaultValue={2} value={difficulty} onChange={setDifficulty} />
           </Group>
 
           <Group justify="space-between">
             Effort
             <Rating defaultValue={2} value={effort} onChange={setEffort} />
           </Group>
+
+          <Group justify="space-between">
+            Pain
+            <Rating defaultValue={2} value={pain} onChange={setPain} />
+          </Group>
+
+          <Textarea
+            style={{ paddingTop: '10px' }}
+            autosize
+            maxLength={255}
+            label="Notes"
+            description="Displayed in journal"
+            placeholder="Great run but long"
+            onChange={(event) => setNote(event.currentTarget.value)}
+          />
         </Fieldset>
 
         <Group justify="center" mt="md">

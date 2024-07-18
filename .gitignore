@@ -175,3 +175,9 @@ backend/obj/Debug/net8.0/apphost.exe
 backend/bin/Debug/net8.0/RunJournal.pdb
 backend/bin/Debug/net8.0/RunJournal.exe
 backend/bin/Debug/net8.0/RunJournal.dll
+*.json
+*.pdb
+*.pdb
+*.dll
+*.cache
+*.cs
