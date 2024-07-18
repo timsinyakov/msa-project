@@ -11,7 +11,7 @@ import {
 import { number } from 'prop-types';
 import { useState } from 'react';
 import styles from './Run.module.css';
-import { getRunById } from '@/Services/RunService';
+import { getRunsByUserId } from '@/Services/RunService';
 export function Demo() {
   const [enjoyment, setEnjoyment] = useState(0);
   const [challenge, setChallenge] = useState(0);
@@ -22,7 +22,7 @@ export function Demo() {
     event?.preventDefault();
     console.log({ enjoyment, challenge, effort, soreness });
 
-    const b = await getRunById(2);
+    const b = await getRunsByUserId(2);
 
     console.log(b);
   };
