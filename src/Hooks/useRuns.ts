@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Runs } from '../Models/Runs';
-import { getRuns, getRunsByUserId as fetchRunById, getRunsByUserId } from '../Services/RunService';
+import { getRuns, getRunById as fetchRunById, addRun as createRun } from '../Services/RunService';
 
 export const useRuns = () => {
-  const [runs, setRun] = useState<Runs[]>([]);
-
-  const [userRuns, setUserRuns] = useState<Runs[]>([]);
+  const [run, setRun] = useState<Runs[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchRuns = async () => {
       try {
-        const allRuns = await getRuns();
-        setRun(allRuns);
+        const runs = await getRuns();
+        setRun(runs);
       } catch (err) {
         setError('Failed to fetch runs');
       } finally {
@@ -24,14 +22,23 @@ export const useRuns = () => {
     fetchRuns();
   }, []);
 
-  const getRunsByUser = async (id: number) => {
+  const getRunById = async (id: number) => {
     try {
-      const runFetch = await getRunsByUserId(id);
-      setUserRuns(runFetch);
+      const runFetch = await fetchRunById(id);
+      setRun([...run, runFetch]);
     } catch (err) {
       setError('Failed to fetch run');
     }
   };
 
-  return { runs, loading, error, userRuns, getRunsByUser };
+  const addRun = async (run: Runs) => {
+    try {
+      const newRun = await createRun(run);
+      setRun((prevRuns) => [...prevRuns, newRun]);
+    } catch (err) {
+      setError('Failed to add run');
+    }
+  };
+
+  return { run, loading, error, getRunById, addRun, useRuns };
 };
