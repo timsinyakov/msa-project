@@ -1,10 +1,11 @@
 export interface Runs {
-  RunId: number;
-  UserId: number;
-  Time: number;
-  Enjoyment: number;
-  Difficulty: number;
-  Pain: number;
-  Effort: number;
-  Note: string;
+  id: number;
+  userId: number;
+  distance: number;
+  time: number;
+  enjoyment: number;
+  difficulty: number;
+  pain: number;
+  effort: number;
+  note: string;
 }

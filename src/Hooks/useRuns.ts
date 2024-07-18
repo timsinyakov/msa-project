@@ -3,7 +3,7 @@ import { Runs } from '../Models/Runs';
 import { getRuns, getRunsByUserId as fetchRunById, getRunsByUserId } from '../Services/RunService';
 
 export const useRuns = () => {
-  const [run, setRun] = useState<Runs[] | undefined>();
+  const [runs, setRun] = useState<Runs[]>([]);
 
   const [userRuns, setUserRuns] = useState<Runs[]>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -12,8 +12,8 @@ export const useRuns = () => {
   useEffect(() => {
     const fetchRuns = async () => {
       try {
-        const runs = await getRuns();
-        setRun(runs);
+        const allRuns = await getRuns();
+        setRun(allRuns);
       } catch (err) {
         setError('Failed to fetch runs');
       } finally {
@@ -24,14 +24,14 @@ export const useRuns = () => {
     fetchRuns();
   }, []);
 
-  const getRunsByUser = async (id: number) => {
-    try {
-      const runFetch = await getRunsByUserId(id);
-      setUserRuns(runFetch);
-    } catch (err) {
-      setError('Failed to fetch run');
-    }
-  };
+  // const getRunsByUser = async (id: number) => {
+  //   try {
+  //     const runFetch = await getRunsByUserId(id);
+  //     setUserRuns(runFetch);
+  //   } catch (err) {
+  //     setError('Failed to fetch run');
+  //   }
+  // };
 
-  return { run, loading, error, getRunsByUser, userRuns };
+  return { runs, loading, error, userRuns };
 };

@@ -7,46 +7,23 @@ import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 
 export function JournalPage() {
-  const { getRunsByUser, userRuns } = useRuns(); // Assuming useRuns returns these
-
-  const [distance, setDistance] = useState();
-  const [time, setTime] = useState();
-  const [enjoyment, setEnjoyment] = useState();
-  const [difficulty, setDifficulty] = useState();
-  const [pain, setPain] = useState();
-  const [effort, setEffort] = useState();
-  const [note, setNote] = useState();
+  const { runs, userRuns } = useRuns(); // Assuming useRuns returns these
 
   const handleSubmit = async () => {
-    await getRunsByUser(2);
-    console.log(userRuns);
+    runs.map((run) => console.log(run));
   };
 
   return (
-    <>
-      <Center>
-        <div className={styles.singleRun}>
-          <Group justify="center" grow>
-            <Text style={{ paddingLeft: '12px', paddingBottom: '100px' }}>Run 1</Text>
-            <Stack>
-              <Text>distance</Text>
-              <Text>time</Text>
-              <Text>speed</Text>
-            </Stack>
+    <div>
+      <Button onClick={handleSubmit}></Button>
+      <h2>Run List</h2>
+      <ul>
+        {runs.map((run) => (
+          <div>{JSON.stringify(run.id)}</div>
+        ))}
+      </ul>
 
-            <Stack>
-              <Text>enjoyment</Text>
-              <Text>difficulty</Text>
-              <Text>pain</Text>
-              <Text>effort</Text>
-            </Stack>
-
-            <Text>Notes</Text>
-          </Group>
-        </div>
-      </Center>
-      <Button onClick={handleSubmit}> get runs</Button>
-      <Text>y</Text>
-    </>
+      {JSON.stringify(runs[8])}
+    </div>
   );
 }
