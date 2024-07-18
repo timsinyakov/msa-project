@@ -12,7 +12,6 @@ import {
 import { number } from 'prop-types';
 import { useState } from 'react';
 import styles from './Run.module.css';
-import { Runs } from '../Models/Runs';
 import { eventMap } from '@testing-library/user-event/dist/types/event/eventMap';
 import { useRuns } from '../Hooks/useRuns';
 

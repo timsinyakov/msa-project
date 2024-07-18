@@ -181,3 +181,15 @@ backend/bin/Debug/net8.0/RunJournal.dll
 *.dll
 *.cache
 *.cs
+backend/obj/Debug/net8.0/RunJournal.sourcelink.json
+backend/obj/Debug/net8.0/RunJournal.pdb
+backend/obj/Debug/net8.0/RunJournal.dll
+backend/obj/Debug/net8.0/RunJournal.AssemblyInfoInputs.cache
+backend/obj/Debug/net8.0/RunJournal.AssemblyInfo.cs
+backend/obj/Debug/net8.0/refint/RunJournal.dll
+backend/obj/Debug/net8.0/ref/RunJournal.dll
+backend/obj/Debug/net8.0/apphost.exe
+backend/Controllers/UserController.cs
+backend/bin/Debug/net8.0/RunJournal.pdb
+backend/bin/Debug/net8.0/RunJournal.exe
+backend/bin/Debug/net8.0/RunJournal.dll

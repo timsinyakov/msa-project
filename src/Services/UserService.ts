@@ -14,3 +14,20 @@ export const getUserById = async (id: number): Promise<Users> => {
   const data = await response.json();
   return data;
 };
+
+export const updateUser = async (user: Users): Promise<Users[]> => {
+  const response = await fetch(`${apiUrl}/User`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+};

@@ -67,6 +67,16 @@ namespace RunJournal.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+
+            var users = await _context.Users
+                                    .Where(user => user.Id == id)
+                                    .FirstOrDefaultAsync();
+            return Ok(users);
+        }
+
         
         
        
