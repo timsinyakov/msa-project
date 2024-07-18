@@ -7,6 +7,9 @@ import { Goal } from './pages/Goal';
 import { Stats } from './pages/Stats';
 import { LoginPage } from './pages/Login';
 import AuthRoute from './components/AuthRoute';
+import { useState } from 'react';
+import { UserContext } from './components/context/contextCreate';
+import { Users } from './Models/Users';
 
 const router = createBrowserRouter([
   {

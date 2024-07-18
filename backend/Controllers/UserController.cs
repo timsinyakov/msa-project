@@ -77,6 +77,17 @@ namespace RunJournal.Controllers
             return Ok(users);
         }
 
+
+        [HttpGet("user{uid}")]
+        public async Task<ActionResult<User>> GetUserById(string uid)
+        {
+
+            var user = await _context.Users
+                                    .Where(user => user.UserUID == uid)
+                                    .FirstOrDefaultAsync();
+            return Ok(user);
+        }
+
         
         
        

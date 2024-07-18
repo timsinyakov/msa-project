@@ -1,13 +1,16 @@
 import { Runs } from '@/Models/Runs';
 import { Button, Center, Group, SimpleGrid, Slider, Stack, Text } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './JournalPage.module.css';
 import { use } from 'chai';
 
 import { useRuns } from '../Hooks/useRuns';
+import { UserContext } from './context/contextCreate';
 
 export function JournalPage() {
   const { run, userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
+
+  const userNow = useContext(UserContext);
 
   useEffect(() => {
     getRunsByUser(2);
@@ -16,6 +19,7 @@ export function JournalPage() {
   return (
     <>
       <Center>
+        {userNow?.userUID}
         <div>
           {userRuns.map((run) => (
             <div className={styles.singleRun}>
