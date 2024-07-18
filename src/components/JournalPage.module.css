@@ -1,0 +1,9 @@
+.singleRun {
+  margin-top: 50px;
+  width: 800px;
+  height: 150px;
+  border-color: white;
+
+  border-style: solid; /* Add this line */
+  border-width: 1px; /* Optional: Adjust the width as needed */
+}
