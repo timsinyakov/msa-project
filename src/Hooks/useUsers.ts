@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Users } from '../Models/Users';
-import { getUsers, getUserById as fetchUserById } from '../Services/UserService';
+import { getUsers, getUserById as fetchUserById, updateUser } from '../Services/UserService';
 
 export const useUsers = () => {
   const [users, setUsers] = useState<Users[]>([]);
@@ -25,11 +25,25 @@ export const useUsers = () => {
   const getUserById = async (id: number) => {
     try {
       const user = await fetchUserById(id);
-      setUsers([...users, user]);
+      setUsers([user]);
     } catch (err) {
       setError('Failed to fetch user');
     }
   };
 
-  return { users, loading, error, getUserById };
+  const updateGoal = async (id: number, goal: number) => {
+    try {
+      const user = await fetchUserById(id);
+      console.log(user);
+      user.goal = goal;
+
+      const a = updateUser(user);
+
+      ///setUsers((prevUsers) => [...prevUsers, user]);
+    } catch (errr) {
+      setError('Failed to update goal');
+    }
+  };
+
+  return { users, loading, error, getUserById, updateGoal };
 };
