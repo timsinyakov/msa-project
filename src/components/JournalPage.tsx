@@ -7,7 +7,7 @@ import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 
 export function JournalPage() {
-  const { runs, userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
+  const { run, userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
 
   useEffect(() => {
     getRunsByUser(2);

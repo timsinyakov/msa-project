@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Runs } from '../Models/Runs';
-import { getRuns, getRunById as fetchRunById, addRun as createRun } from '../Services/RunService';
+import { getRuns, addRun as createRun, getRunsByUserId } from '../Services/RunService';
 
 export const useRuns = () => {
   const [run, setRun] = useState<Runs[]>([]);
+  const [userRuns, setUserRuns] = useState<Runs[]>([]);
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,10 +24,10 @@ export const useRuns = () => {
     fetchRuns();
   }, []);
 
-  const getRunById = async (id: number) => {
+  const getRunsByUser = async (id: number) => {
     try {
-      const runFetch = await fetchRunById(id);
-      setRun([...run, runFetch]);
+      const runFetch = await getRunsByUserId(id);
+      setUserRuns(runFetch);
     } catch (err) {
       setError('Failed to fetch run');
     }
@@ -40,5 +42,5 @@ export const useRuns = () => {
     }
   };
 
-  return { run, loading, error, getRunById, addRun, useRuns };
+  return { run, loading, error, addRun, useRuns, getRunsByUser, userRuns };
 };

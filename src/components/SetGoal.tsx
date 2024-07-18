@@ -1,6 +1,8 @@
 import { Button, Slider } from '@mantine/core';
 import { useState } from 'react';
 
+import { useUsers } from '../Hooks/useUsers';
+
 export function SetGoal() {
   const [value, setValue] = useState(40);
 

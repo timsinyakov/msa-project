@@ -13,7 +13,6 @@ import { useState } from 'react';
 import styles from './Run.module.css';
 import { useRuns } from '@/Hooks/useRuns'; // Import useRuns
 
-import { addRun, getRunById } from '@/Services/RunService';
 export function Demo() {
   const [enjoyment, setEnjoyment] = useState(0);
   const [challenge, setChallenge] = useState(0);
@@ -27,14 +26,15 @@ export function Demo() {
     console.log({ enjoyment, challenge, effort, soreness });
 
     const newRun = {
-      RunId: 113,
-      UserId: 2,
-      Time: 42,
-      Enjoyment: 2,
-      Difficulty: 3,
-      Pain: 4,
-      Effort: 5,
-      Note: 'this note should work',
+      id: 0,
+      userId: 2,
+      distance: 123,
+      time: 42,
+      enjoyment: 2,
+      difficulty: 3,
+      pain: 4,
+      effort: 5,
+      note: 'this note should wor aaaaa k',
     };
 
     const addedRun = await addRun(newRun);
