@@ -1,54 +1,97 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using msarun.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace msarun.Controllers
+using RunJournal.Data;
+using RunJournal.Entities;
+namespace RunJournal.Controllers
 {
-    [ApiController]
+
     [Route("api/[controller]")]
+    [ApiController]
+
     public class RunController : ControllerBase
     {
 
+        private readonly DataContext _context;
 
-        private readonly Msa1Context _context;
-
-        public RunController(Msa1Context context)
+        public RunController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/run
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Run>>> GetAllRuns()
+        public async Task<ActionResult<List<Run>>> GetAllRuns()
         {
             var runs = await _context.Runs.ToListAsync();
+
             return Ok(runs);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Run>> GetRunById(int id)
+        public async Task<ActionResult<Run>> GetRun(int id)
         {
             var run = await _context.Runs.FindAsync(id);
-
-            if (run == null)
-            {
-                return NotFound();
-            }
+            
 
             return Ok(run);
         }
 
-       // POST: api/run
         [HttpPost]
-        public async Task<ActionResult<Run>> CreateRun(Run run)
+        public async Task<ActionResult<List<Run>>> AddRun(Run newRun)
         {
-            _context.Runs.Add(run);
+            _context.Runs.Add(newRun);
+            await _context.SaveChangesAsync();
+                
+            return Ok(await _context.Runs.ToListAsync());
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<List<Run>>> UpdateRun(Run updatedRun)
+        {
+            var dbRun = await _context.Runs.FindAsync(updatedRun.Id);
+            if (dbRun is null)
+            {
+                return NotFound("Run not found.");
+            }
+            dbRun.Time = updatedRun.Time;
+            dbRun.Enjoyment = updatedRun.Enjoyment;
+            dbRun.Difficulty = updatedRun.Difficulty;
+            dbRun.Pain = updatedRun.Pain;
+            dbRun.Effort = updatedRun.Effort;
+            dbRun.Note = updatedRun.Note;
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetRunById), new { id = run.RunId }, run);
-}
+     
+
+            return Ok(await _context.Runs.ToListAsync());
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<List<Run>>> DeleteRun(int id)
+        {
+            var run = await _context.Runs.FindAsync(id);
+            if (run is null)
+            {
+                return NotFound("Run not found.");
+            }
+            _context.Runs.Remove(run);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Runs.ToListAsync());
+        }
+
+        [HttpGet("user{id}")]
+        public async Task<ActionResult<List<Run>>> GetRunsByUser(int id)
+        {
+
+            var runs = await _context.Runs
+                                    .Where(run => run.UserId == id)
+                                    .ToListAsync(); 
+
+            return Ok(runs);
+        }
+
+
 
     }
 }

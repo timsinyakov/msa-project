@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["msarun/msarun.csproj", "msarun/"]
-RUN dotnet restore "./msarun/msarun.csproj"
+COPY ["RunJournal/RunJournal.csproj", "RunJournal/"]
+RUN dotnet restore "./RunJournal/RunJournal.csproj"
 COPY . .
-WORKDIR "/src/msarun"
-RUN dotnet build "./msarun.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/RunJournal"
+RUN dotnet build "./RunJournal.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./msarun.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./RunJournal.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "msarun.dll"]
+ENTRYPOINT ["dotnet", "RunJournal.dll"]

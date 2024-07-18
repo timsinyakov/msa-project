@@ -1,42 +1,76 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using msarun.Models;
-
-namespace msarun.Controllers
+using RunJournal.Data;
+using RunJournal.Entities;
+namespace RunJournal.Controllers
 {
-    [ApiController]
+
     [Route("api/[controller]")]
+    [ApiController]
+
     public class UserController : ControllerBase
     {
-        private readonly Msa1Context _context;
 
-        public UserController(Msa1Context context)
+        private readonly DataContext _context;
+
+        public UserController(DataContext context)
         {
             _context = context;
         }
 
-        // GET: api/user
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        public async Task<ActionResult<List<User>>> GetAllUsers()
         {
             var users = await _context.Users.ToListAsync();
+
             return Ok(users);
         }
 
-        // GET: api/user/{id}
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        [HttpPost]
+        public async Task<ActionResult<List<User>>> AddUser(User newUser)
+        {
+            _context.Users.Add(newUser);
+            await _context.SaveChangesAsync();
+                
+            return Ok(await _context.Users.ToListAsync());
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<List<User>>> UpdateUser(User updatedUser)
+        {
+            var dbUser = await _context.Users.FindAsync(updatedUser.Id);
+            if (dbUser is null)
+            {
+                return NotFound("User not found.");
+            }
+            dbUser.UserUID = updatedUser.UserUID;
+            dbUser.goal = updatedUser.goal;
+            
+            await _context.SaveChangesAsync();
+
+     
+
+            return Ok(await _context.Users.ToListAsync());
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult<List<User>>> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
-
-            if (user == null)
+            if (user is null)
             {
-                return NotFound();
+                return NotFound("User not found.");
             }
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(await _context.Users.ToListAsync());
         }
 
         
+        
+       
+
+
     }
 }
