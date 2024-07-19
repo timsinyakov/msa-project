@@ -5,6 +5,7 @@ import {
   getUserById as fetchUserById,
   updateUser,
   getUserByUID as getUID,
+  createUser,
 } from '../Services/UserService';
 
 export const useUsers = () => {
@@ -62,5 +63,14 @@ export const useUsers = () => {
     }
   };
 
-  return { users, loading, error, getUserById, updateGoal, getUserByUID, localUser };
+  const addUser = async (user: Users) => {
+    try {
+      const thin = await createUser(user);
+      
+    } catch (err) {
+      setError('Failed to add user');
+    }
+  }
+
+  return { users, loading, error, getUserById, updateGoal, getUserByUID, localUser, addUser };
 };

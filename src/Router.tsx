@@ -10,6 +10,7 @@ import AuthRoute from './components/AuthRoute';
 import { useState } from 'react';
 import { UserContext } from './components/context/contextCreate';
 import { Users } from './Models/Users';
+import Register from './components/Register';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/register',
+    element: <Register />,
   },
 ]);
 
