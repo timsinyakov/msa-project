@@ -26,7 +26,7 @@ export function Demo() {
   const [time, setTime] = useState(0);
   const [distance, setDistance] = useState(0);
   const [note, setNote] = useState('');
-  
+
   const userNow = useContext(UserContext);
 
   const handeById = async () => {
@@ -35,7 +35,7 @@ export function Demo() {
     // Assuming addRun expects an object with these properties
     const a = await addRun({
       id: 0,
-      UserUID: userNow?.userUID,
+      userUID: userNow?.userUID,
       time: time,
       enjoyment: enjoyment,
       difficulty: difficulty,
