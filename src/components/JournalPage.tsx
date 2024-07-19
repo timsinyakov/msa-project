@@ -13,7 +13,7 @@ export function JournalPage() {
   const userNow = useContext(UserContext);
 
   useEffect(() => {
-    getRunsByUser(2);
+    getRunsByUser("deez");
   }, []);
 
   return (

@@ -80,12 +80,12 @@ namespace RunJournal.Controllers
             return Ok(await _context.Runs.ToListAsync());
         }
 
-        [HttpGet("user{id}")]
-        public async Task<ActionResult<List<Run>>> GetRunsByUser(int id)
+        [HttpGet("user{uid}")]
+        public async Task<ActionResult<List<Run>>> GetRunsByUser(string uid)
         {
 
             var runs = await _context.Runs
-                                    .Where(run => run.UserId == id)
+                                    .Where(run => run.UserUID == uid)
                                     .ToListAsync(); 
 
             return Ok(runs);

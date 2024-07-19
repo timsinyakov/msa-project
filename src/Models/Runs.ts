@@ -1,6 +1,6 @@
 export interface Runs {
   id: number;
-  userId: number;
+  UserUID: string;
   distance: number;
   time: number;
   enjoyment: number;

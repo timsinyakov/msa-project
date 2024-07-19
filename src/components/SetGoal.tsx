@@ -14,7 +14,7 @@ export function SetGoal() {
   };
 
   const handeClick = () => {
-    updateGoal(1, value);
+    updateGoal("deez", value);
   };
 
   return (

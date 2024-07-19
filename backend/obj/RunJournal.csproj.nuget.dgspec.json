@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj": {}
+    "D:\\github\\msa-project\\backend\\RunJournal.csproj": {}
   },
   "projects": {
-    "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj": {
+    "D:\\github\\msa-project\\backend\\RunJournal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj",
+        "projectUniqueName": "D:\\github\\msa-project\\backend\\RunJournal.csproj",
         "projectName": "RunJournal",
-        "projectPath": "E:\\cs shit\\msa-project\\backend\\RunJournal.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "E:\\cs shit\\msa-project\\backend\\obj\\",
+        "projectPath": "D:\\github\\msa-project\\backend\\RunJournal.csproj",
+        "packagesPath": "C:\\Users\\timsi\\.nuget\\packages\\",
+        "outputPath": "D:\\github\\msa-project\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\timsi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

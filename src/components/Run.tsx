@@ -32,7 +32,7 @@ export function Demo() {
     // Assuming addRun expects an object with these properties
     const a = await addRun({
       id: 0,
-      userId: 2,
+      UserUID: "deez",
       time: time,
       enjoyment: enjoyment,
       difficulty: difficulty,
