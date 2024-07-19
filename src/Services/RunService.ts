@@ -9,8 +9,8 @@ export const getRuns = async (): Promise<Runs[]> => {
   return data;
 };
 
-export const getRunsByUserId = async (id: number): Promise<Runs[]> => {
-  const response = await fetch(`${apiUrl}/Run/user${id}`);
+export const getRunsByUserUid = async (uid: string): Promise<Runs[]> => {
+  const response = await fetch(`${apiUrl}/Run/user${uid}`);
   const data = await response.json();
   return data;
 };

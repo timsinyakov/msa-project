@@ -13,7 +13,9 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    options.UseSqlServer("Server=100.110.227.10;Database=RunJournalDb;User Id=timsuh;Password=tim;TrustServerCertificate=True;");
+});
 
 builder.Services.AddCors(options =>
 {

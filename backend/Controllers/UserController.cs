@@ -79,7 +79,7 @@ namespace RunJournal.Controllers
 
 
         [HttpGet("user{uid}")]
-        public async Task<ActionResult<User>> GetUserById(string uid)
+        public async Task<ActionResult<User>> GetUserByUID(string uid)
         {
 
             var user = await _context.Users
