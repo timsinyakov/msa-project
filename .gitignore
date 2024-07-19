@@ -193,3 +193,8 @@ backend/Controllers/UserController.cs
 backend/bin/Debug/net8.0/RunJournal.pdb
 backend/bin/Debug/net8.0/RunJournal.exe
 backend/bin/Debug/net8.0/RunJournal.dll
+*.dll
+*.exe
+*.pdb
+*.cs
+*.cache
