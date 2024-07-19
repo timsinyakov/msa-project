@@ -13,7 +13,7 @@ export function JournalPage() {
   const userNow = useContext(UserContext);
 
   useEffect(() => {
-    getRunsByUser("deez");
+    getRunsByUser(userNow?.userUID);
   }, []);
 
   return (
@@ -21,10 +21,10 @@ export function JournalPage() {
       <Center>
         {userNow?.userUID}
         <div>
-          {userRuns.map((run) => (
-            <div className={styles.singleRun}>
+          {userRuns.map((run, index) => (
+            <div className={styles.singleRun} key={index}>
               <Group justify="center" grow>
-                <Text style={{ paddingLeft: '12px', paddingBottom: '100px' }}>Run {run.id}</Text>
+                <Text style={{ paddingLeft: '12px', paddingBottom: '100px' }}>Run {index+1}</Text>
                 <Stack>
                   <Text>Distance: {run.distance}</Text>
                   <Text>time: {run.time}</Text>

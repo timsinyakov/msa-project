@@ -10,10 +10,11 @@ import {
   Textarea,
 } from '@mantine/core';
 import { number } from 'prop-types';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styles from './Run.module.css';
 import { eventMap } from '@testing-library/user-event/dist/types/event/eventMap';
 import { useRuns } from '../Hooks/useRuns';
+import { UserContext } from './context/contextCreate';
 
 export function Demo() {
   const { addRun } = useRuns();
@@ -25,6 +26,8 @@ export function Demo() {
   const [time, setTime] = useState(0);
   const [distance, setDistance] = useState(0);
   const [note, setNote] = useState('');
+  
+  const userNow = useContext(UserContext);
 
   const handeById = async () => {
     event?.preventDefault();
@@ -32,7 +35,7 @@ export function Demo() {
     // Assuming addRun expects an object with these properties
     const a = await addRun({
       id: 0,
-      UserUID: "deez",
+      UserUID: userNow?.userUID,
       time: time,
       enjoyment: enjoyment,
       difficulty: difficulty,
