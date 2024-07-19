@@ -1,20 +1,24 @@
 import { Button, Slider } from '@mantine/core';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { useUsers } from '../Hooks/useUsers';
+import { UserContext } from './context/contextCreate';
 
 export function SetGoal() {
+  const userNow = useContext(UserContext);
+  console.log(userNow.UserUID);
   const { updateGoal } = useUsers();
 
   const [value, setValue] = useState(40);
 
   const handleChange = (newValue: number) => {
+    
     setValue(newValue);
     // Call your second function here
   };
 
   const handeClick = () => {
-    updateGoal("deez", value);
+    updateGoal(userNow.userUID, value);
   };
 
   return (

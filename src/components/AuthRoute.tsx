@@ -20,7 +20,6 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
   useEffect(() => {
     const AuthCheck = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        
         const a = await getUserByUID(currentUser.uid);
         setUserNow(a);
         console.log(a);

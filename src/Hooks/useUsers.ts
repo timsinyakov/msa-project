@@ -49,6 +49,8 @@ export const useUsers = () => {
   };
 
   const updateGoal = async (uid: string, goal: number) => {
+    console.log("im in")
+    console.log(uid);
     try {
       const user = await getUID(uid);
       console.log("wasawd")
