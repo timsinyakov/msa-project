@@ -1,49 +1,55 @@
 import { Runs } from '@/Models/Runs';
-import { Button, Center, Group, SimpleGrid, Slider, Stack, Text } from '@mantine/core';
+import {
+  Avatar,
+  Button,
+  Card,
+  Center,
+  Group,
+  ScrollArea,
+  SimpleGrid,
+  Slider,
+  Stack,
+  Text,
+} from '@mantine/core';
 import { useContext, useEffect, useState } from 'react';
 import styles from './JournalPage.module.css';
 import { use } from 'chai';
-
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
+import { SingleRun } from './JournalSingle';
 
 export function JournalPage() {
-  const { run, userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
-
+  const { userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
   const userNow = useContext(UserContext);
 
   useEffect(() => {
     getRunsByUser(userNow?.userUID);
-  }, []);
+  }, [userNow?.userUID]);
 
   return (
     <>
-      <Center>
-        {userNow?.userUID}
-        <div>
-          {userRuns.map((run, index) => (
-            <div className={styles.singleRun} key={index}>
-              <Group justify="center" grow>
-                <Text style={{ paddingLeft: '12px', paddingBottom: '100px' }}>Run {index+1}</Text>
-                <Stack>
-                  <Text>Distance: {run.distance}</Text>
-                  <Text>time: {run.time}</Text>
-                  <Text>speed: {run.distance / run.time}</Text>
-                </Stack>
+      <div className={styles.scroll}>
+        {userRuns?.map((run, index) => (
+          <SingleRun
+            goal={userNow?.goal}
+            key={index}
+            time={run.time}
+            distance={run.distance}
+            speed={
+              isFinite(run.distance / run.time)
+                ? (run.distance / (run.time / 60)).toFixed(2).toString() + ' km/hr'
+                : 'No Data'
+            }
+            enjoyment={run.enjoyment}
+            difficulty={run.difficulty}
+            pain={run.pain}
+            effort={run.effort}
+            note={run.note}
+          />
+        ))}
+      </div>
 
-                <Stack>
-                  <Text>enjoyment: {run.enjoyment}</Text>
-                  <Text>difficulty: {run.difficulty}</Text>
-                  <Text>pain: {run.pain}</Text>
-                  <Text>effort: {run.effort}</Text>
-                </Stack>
-
-                <Text className={styles.runContainer}>Notes: {run.note}</Text>
-              </Group>
-            </div>
-          ))}
-        </div>
-      </Center>
+      {userNow?.userUID}
     </>
   );
 }
