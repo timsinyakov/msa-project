@@ -29,25 +29,27 @@ export function JournalPage() {
   return (
     <>
       <div className={styles.scroll}>
-        <ScrollArea h={500}>
-          {userRuns?.map((run, index) => (
-            <SingleRun
+        {userRuns?.map((run, index) => (
+          <SingleRun
             goal={userNow?.goal}
-              key={index}
-              time={run.time}
-              distance={run.distance}
-              speed={run.distance/run.time}
-              enjoyment={run.enjoyment}
-              difficulty={run.difficulty}
-              pain={run.pain}
-              effort={run.effort}
-              note={run.note}
-            />
-          ))}
-        </ScrollArea>
-        </div>
+            key={index}
+            time={run.time}
+            distance={run.distance}
+            speed={
+              isFinite(run.distance / run.time)
+                ? (run.distance / run.time).toFixed(2).toString() + ' km/hr'
+                : 'No Data'
+            }
+            enjoyment={run.enjoyment}
+            difficulty={run.difficulty}
+            pain={run.pain}
+            effort={run.effort}
+            note={run.note}
+          />
+        ))}
+      </div>
 
-        {userNow?.userUID}
+      {userNow?.userUID}
     </>
   );
 }
