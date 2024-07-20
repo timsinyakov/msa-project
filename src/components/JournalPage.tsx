@@ -5,6 +5,7 @@ import {
   Card,
   Center,
   Group,
+  ScrollArea,
   SimpleGrid,
   Slider,
   Stack,
@@ -28,11 +29,24 @@ export function JournalPage() {
 
   return (
     <>
-      {userRuns?.map((run, index) => (
-        <SingleRun key={index} distance={run.distance} speed={run.enjoyment} />
-      ))}
+      <div style={{ backgroundColor: 'red', paddingBottom: '50px', paddingTop: '50px' }}>
+        <ScrollArea h={500}>
+          {userRuns?.map((run, index) => (
+            <SingleRun
+              key={index}
+              distance={run.distance}
+              speed={run.enjoyment}
+              enjoyment={run.enjoyment}
+              difficulty={run.difficulty}
+              pain={run.pain}
+              effort={run.effort}
+              note={run.note}
+            />
+          ))}
+        </ScrollArea>
 
-      {userNow?.userUID}
+        {userNow?.userUID}
+      </div>
     </>
   );
 }
