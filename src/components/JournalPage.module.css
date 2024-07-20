@@ -12,3 +12,8 @@
   max-width: 150px; /* Adjust as needed */
   overflow-wrap: break-word;
 }
+.scroll{
+  padding-top: 50px;
+  width: 800px;
+  margin: auto;
+}

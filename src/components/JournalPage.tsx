@@ -16,7 +16,6 @@ import styles from './JournalPage.module.css';
 import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
-import classes from './JournalSingle.module.css';
 import { SingleRun } from './JournalSingle';
 
 export function JournalPage() {
@@ -29,13 +28,15 @@ export function JournalPage() {
 
   return (
     <>
-      <div style={{ backgroundColor: 'red', paddingBottom: '50px', paddingTop: '50px' }}>
+      <div className={styles.scroll}>
         <ScrollArea h={500}>
           {userRuns?.map((run, index) => (
             <SingleRun
+            goal={userNow?.goal}
               key={index}
+              time={run.time}
               distance={run.distance}
-              speed={run.enjoyment}
+              speed={run.distance/run.time}
               enjoyment={run.enjoyment}
               difficulty={run.difficulty}
               pain={run.pain}
@@ -44,9 +45,9 @@ export function JournalPage() {
             />
           ))}
         </ScrollArea>
+        </div>
 
         {userNow?.userUID}
-      </div>
     </>
   );
 }
