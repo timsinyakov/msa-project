@@ -37,7 +37,7 @@ export function JournalPage() {
             distance={run.distance}
             speed={
               isFinite(run.distance / run.time)
-                ? (run.distance / run.time).toFixed(2).toString() + ' km/hr'
+                ? (run.distance / (run.time / 60)).toFixed(2).toString() + ' km/hr'
                 : 'No Data'
             }
             enjoyment={run.enjoyment}
