@@ -1,5 +1,5 @@
 export interface Users {
   Id: number;
-  UserUID: string;
+  userUID: string;
   goal: number;
 }
