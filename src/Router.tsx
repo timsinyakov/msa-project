@@ -11,6 +11,8 @@ import { useState } from 'react';
 import { UserContext } from './components/context/contextCreate';
 import { Users } from './Models/Users';
 import Register from './components/Register';
+import { GoalView } from './components/GoalView';
+import { ViewGoalPage } from './pages/ViewGoalPage';
 
 const router = createBrowserRouter([
   {
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
     path: '/goal',
     element: (
       <AuthRoute>
-        <Goal />
+        <ViewGoalPage />
       </AuthRoute>
     ),
   },
