@@ -34,7 +34,7 @@ import { useUsers } from '@/Hooks/useUsers';
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           navigate('/run');
-          addUser({Id: 0, UserUID: userCredential.user.uid, goal: 0,})
+          addUser({Id: 0, userUID: userCredential.user.uid, goal: 0,})
           
         })
         .catch((error) => {
