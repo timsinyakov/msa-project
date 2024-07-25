@@ -19,5 +19,7 @@
         public byte Effort { get; set; }
 
         public string? Note { get; set; }
+
+        public DateTime Date { get; set; } // Added Date property
     }
 }

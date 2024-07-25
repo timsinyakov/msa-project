@@ -24,6 +24,7 @@ interface SingleRunProps {
   effort: number;
   note: string;
   goal: number;
+  date: Date;
 }
 
 export const SingleRun = ({
@@ -36,11 +37,20 @@ export const SingleRun = ({
   pain,
   effort,
   note,
+  date,
 }: SingleRunProps) => {
+  const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
   return (
     <>
       <Flex className={styles.back} justify="space-between" align="center">
         <div style={{ marginLeft: '50px' }}>
+          <Text size="xs" style={{ marginLeft: '5px' }}>
+            {formattedDate}
+          </Text>
           <Text fw={750} size="40px">
             {distance} km
           </Text>
