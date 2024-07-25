@@ -45,6 +45,7 @@ export function JournalPage() {
             pain={run.pain}
             effort={run.effort}
             note={run.note}
+            date={run.date}
           />
         ))}
       </div>

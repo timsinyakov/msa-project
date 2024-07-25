@@ -38,9 +38,19 @@ namespace RunJournal.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Run>>> AddRun(Run newRun)
         {
+            if (newRun == null)
+            {
+                return BadRequest("Run data is required.");
+            }
+
+            // Ensure the Date property is set
+            if (newRun.Date == DateTime.MinValue)
+            {
+                newRun.Date = DateTime.UtcNow;
+            }
+
             _context.Runs.Add(newRun);
             await _context.SaveChangesAsync();
-                
             return Ok(await _context.Runs.ToListAsync());
         }
 
@@ -48,10 +58,11 @@ namespace RunJournal.Controllers
         public async Task<ActionResult<List<Run>>> UpdateRun(Run updatedRun)
         {
             var dbRun = await _context.Runs.FindAsync(updatedRun.Id);
-            if (dbRun is null)
+            if (dbRun == null)
             {
                 return NotFound("Run not found.");
             }
+
             dbRun.Time = updatedRun.Time;
             dbRun.Enjoyment = updatedRun.Enjoyment;
             dbRun.Difficulty = updatedRun.Difficulty;
@@ -59,10 +70,13 @@ namespace RunJournal.Controllers
             dbRun.Effort = updatedRun.Effort;
             dbRun.Note = updatedRun.Note;
 
+            // Ensure the Date property is updated correctly
+            if (updatedRun.Date != DateTime.MinValue)
+            {
+                dbRun.Date = updatedRun.Date;
+            }
+
             await _context.SaveChangesAsync();
-
-     
-
             return Ok(await _context.Runs.ToListAsync());
         }
 
