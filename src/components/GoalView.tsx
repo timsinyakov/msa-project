@@ -1,5 +1,5 @@
 import { ThemeIcon, Progress, Text, Group, Badge, Paper, rem, Button } from '@mantine/core';
-import { IconSwimming } from '@tabler/icons-react';
+import { IconRun, IconSwimming } from '@tabler/icons-react';
 import classes from './GoalView.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { useRuns } from '@/Hooks/useRuns';
@@ -12,6 +12,7 @@ export function GoalView() {
 
   const [progress, setProgress] = useState<number>();
   const [percentage, setPercentage] = useState<number>();
+  const [daysUntilSunday, setDaysUntilSunday] = useState(0);
 
   useEffect(() => {
     const fetchRuns = async () => {
@@ -25,7 +26,13 @@ export function GoalView() {
 
   useEffect(() => {
     if (userRuns) {
-      const total = userRuns.reduce((acc, run) => acc + run.distance, 0);
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+      const recentRuns = userRuns.filter((run) => new Date(run.date) >= oneWeekAgo);
+      console.log(recentRuns);
+      const total = recentRuns.reduce((acc, run) => acc + run.distance, 0);
+
       setProgress(total);
       if (userNow?.goal) {
         const percent = total >= userNow.goal ? 100 : (total / userNow.goal) * 100;
@@ -34,15 +41,29 @@ export function GoalView() {
     }
   }, [userRuns, userNow?.goal, userNow?.userUID]);
 
+  useEffect(() => {
+    const calculateDaysUntilSunday = () => {
+      const today = new Date();
+      const dayOfWeek = today.getDay();
+      const daysUntilSunday = dayOfWeek === 0 ? 0 : 7 - dayOfWeek;
+      setDaysUntilSunday(daysUntilSunday);
+    };
+
+    calculateDaysUntilSunday();
+  }, []);
+
   return (
     <div style={{ width: '800px', margin: 'auto', marginTop: '30px' }}>
       <Paper radius="md" withBorder className={classes.card} mt={20}>
         <ThemeIcon className={classes.icon} size={60} radius={60}>
-          <IconSwimming style={{ width: rem(32), height: rem(32) }} stroke={1.5} />
+          <IconRun style={{ width: rem(32), height: rem(32) }} stroke={1.5} />
         </ThemeIcon>
 
         <Text ta="center" fw={700} className={classes.title}>
           Running challenge
+        </Text>
+        <Text c="dimmed" ta="center" fz="sm">
+          {userNow?.goal} km / week
         </Text>
 
         <Group justify="space-between" mt="xs">
@@ -59,10 +80,20 @@ export function GoalView() {
           <Text fz="sm">
             {progress} / {userNow?.goal} km
           </Text>
-          <Badge className={classes.badgeHover} size="sm" component={Link} to={'/setgoal'}>
-            Set Goal
-          </Badge>
+          <Badge size="sm">{daysUntilSunday} days left</Badge>
         </Group>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '50px',
+          }}
+        >
+          <Button component={Link} to="/setgoal">
+            Set Goal
+          </Button>
+        </div>
       </Paper>
     </div>
   );

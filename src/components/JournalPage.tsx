@@ -21,10 +21,16 @@ import { SingleRun } from './JournalSingle';
 export function JournalPage() {
   const { userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
   const userNow = useContext(UserContext);
+  const [deletionCount, setDeletionCount] = useState(0);
 
   useEffect(() => {
     getRunsByUser(userNow?.userUID);
-  }, [userNow?.userUID]);
+  }, [userNow?.userUID, deletionCount]);
+
+  const onDelete = () => {
+    console.log('+1');
+    setDeletionCount((prevCount) => prevCount + 1);
+  };
 
   return (
     <>
@@ -46,6 +52,8 @@ export function JournalPage() {
             effort={run.effort}
             note={run.note}
             date={run.date}
+            id={run.id}
+            onDelete={onDelete} // Pass the delete handler to SingleRun
           />
         ))}
       </div>

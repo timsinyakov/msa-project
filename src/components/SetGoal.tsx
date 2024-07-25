@@ -1,6 +1,7 @@
 import { Button, Center, Group, Paper, Slider, ThemeIcon, Text, Badge, rem } from '@mantine/core';
 import { useContext, useState } from 'react';
 import classes from './GoalView.module.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 import { useUsers } from '../Hooks/useUsers';
 import { UserContext } from './context/contextCreate';
@@ -10,6 +11,7 @@ import { Link } from 'react-router-dom';
 export function SetGoal() {
   const userNow = useContext(UserContext);
   const { updateGoal } = useUsers();
+  const navigate = useNavigate(); // Get the navigate function
 
   const [value, setValue] = useState(userNow?.goal);
 
@@ -20,6 +22,7 @@ export function SetGoal() {
 
   const handeClick = async () => {
     await updateGoal(userNow?.userUID, value);
+    navigate('/goal'); // Navigate to the desired route
   };
 
   return (
@@ -34,14 +37,8 @@ export function SetGoal() {
             Running challenge
           </Text>
 
-          <Group justify="space-between" mt="xs">
-            <Text fz="sm" c="dimmed">
-              Progress
-            </Text>
-            <Text fz="sm" c="dimmed">
-              wwassupu
-            </Text>
-          </Group>
+          <Group justify="space-between" mt="xs"></Group>
+
           <Slider
             value={value}
             onChange={handleChange}

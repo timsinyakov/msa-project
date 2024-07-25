@@ -43,6 +43,7 @@ export function Demo() {
       effort: effort,
       distance: distance,
       note: note,
+      date: undefined,
     });
 
     console.log(a);

@@ -1,7 +1,7 @@
 import { Runs } from '../Models/Runs';
 import config from '../Config';
 
-const { apiUrl } = config;
+const apiUrl = 'https://localhost:7034/api';
 
 export const getRuns = async (): Promise<Runs[]> => {
   const response = await fetch(`${apiUrl}/Run/`);
@@ -30,4 +30,15 @@ export const addRun = async (run: Runs): Promise<Runs> => {
 
   const data = await response.json();
   return data;
+};
+
+export const delRun = async (id: number): Promise<void> => {
+  const response = await fetch(`${apiUrl}/Run/${id}`, {
+    method: 'DELETE',
+  });
+  console.log('deleted');
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
 };
