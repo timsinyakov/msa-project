@@ -15,8 +15,8 @@ export function SetGoal() {
     // Call your second function here
   };
 
-  const handeClick = () => {
-    updateGoal(userNow?.userUID, value);
+  const handeClick = async () => {
+    await updateGoal(userNow?.userUID, value);
   };
 
   return (

@@ -49,15 +49,15 @@ export const useUsers = () => {
   };
 
   const updateGoal = async (uid: string, goal: number) => {
-    console.log("im in")
+    console.log('im in');
     console.log(uid);
     try {
       const user = await getUID(uid);
-      console.log("wasawd")
-      console.log(user);
+      console.log('wasawd');
       user.goal = goal;
 
-      const a = updateUser(user);
+      const a = await updateUser(user);
+      console.log(user);
 
       ///setUsers((prevUsers) => [...prevUsers, user]);
     } catch (errr) {
@@ -68,11 +68,10 @@ export const useUsers = () => {
   const addUser = async (user: Users) => {
     try {
       const thin = await createUser(user);
-      
     } catch (err) {
       setError('Failed to add user');
     }
-  }
+  };
 
   return { users, loading, error, getUserById, updateGoal, getUserByUID, localUser, addUser };
 };

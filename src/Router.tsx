@@ -48,6 +48,15 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: '/setgoal',
+    element: (
+      <AuthRoute>
+        <Goal />
+      </AuthRoute>
+    ),
+  },
+
+  {
     path: '/stats',
     element: (
       <AuthRoute>

@@ -48,8 +48,6 @@ export function JournalPage() {
           />
         ))}
       </div>
-
-      {userNow?.userUID}
     </>
   );
 }
