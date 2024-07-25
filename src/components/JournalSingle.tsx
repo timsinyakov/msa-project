@@ -56,7 +56,7 @@ export const SingleRun = ({
           <Space h="xs" />
 
           {note && (
-            <HoverCard width={200} shadow="md">
+            <HoverCard shadow="md">
               <HoverCard.Target>
                 <Button radius={10} color="teal">
                   See Note

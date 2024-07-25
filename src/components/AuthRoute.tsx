@@ -33,13 +33,9 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
     });
 
     return () => AuthCheck();
-  }, [auth]);
+  }, [auth, navigate]);
 
-  return (
-    <>
-      <UserContext.Provider value={userNow}>{children}</UserContext.Provider>
-    </>
-  );
+  return <UserContext.Provider value={userNow}>{children}</UserContext.Provider>;
 };
 
 export default AuthRoute;
