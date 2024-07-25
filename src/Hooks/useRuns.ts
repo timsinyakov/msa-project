@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Runs } from '../Models/Runs';
-import { getRuns, addRun as createRun, getRunsByUserUid } from '../Services/RunService';
+import {
+  getRuns,
+  addRun as createRun,
+  getRunsByUserUid,
+  delRun as deleteRun,
+} from '../Services/RunService';
 
 export const useRuns = () => {
   const [run, setRun] = useState<Runs[]>([]);
@@ -42,5 +47,12 @@ export const useRuns = () => {
     }
   };
 
-  return { run, loading, error, addRun, useRuns, getRunsByUser, userRuns };
+  const delRun = async (id: number) => {
+    try {
+      const delRun = await deleteRun(id);
+    } catch (err) {
+      setError('couuludnt delete');
+    }
+  };
+  return { run, loading, error, addRun, useRuns, getRunsByUser, userRuns, delRun };
 };
