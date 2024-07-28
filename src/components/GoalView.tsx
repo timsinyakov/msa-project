@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 export function GoalView() {
   const userNow = useContext(UserContext);
   const { userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
+  const oneWeekAgo = new Date();
+
+  oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
   const [progress, setProgress] = useState<number>();
   const [percentage, setPercentage] = useState<number>();

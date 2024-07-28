@@ -33,7 +33,7 @@ export const addRun = async (run: Runs): Promise<Runs> => {
 };
 
 export const delRun = async (id: number): Promise<void> => {
-  const response = await fetch(`${apiUrl}/Run/${id}`, {
+  const response = await fetch(`${apiUrl}/Run/?id=${id}`, {
     method: 'DELETE',
   });
   console.log('deleted');
