@@ -68,6 +68,7 @@ export const SingleRun = ({
       justify="space-between"
       align="center"
       style={{ position: 'relative' }}
+      bg="primary"
     >
       <Button
         variant="light"
