@@ -91,7 +91,7 @@ export const NewSingleRun = ({
           <Text size="xs" color="dimmed">
             {feedback.title}
           </Text>
-          <Rating value={feedback.value} readOnly className={classes.rating} />
+          <Rating value={feedback.value} readOnly className={classes.rating} size="lg" />
         </Stack>
       </div>
     </Paper>

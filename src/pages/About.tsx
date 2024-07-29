@@ -1,3 +1,4 @@
+import { FeaturesCards } from '@/components/About';
 import { Header } from '@/components/Header';
 import { Navbar } from '@/components/Nav';
 import { HeaderMegaMenu } from '@/components/NewNav';
@@ -8,6 +9,7 @@ export function About() {
   return (
     <>
       <HeaderMegaMenu />
+      <FeaturesCards />
     </>
   );
 }
