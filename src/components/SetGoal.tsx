@@ -27,7 +27,7 @@ export function SetGoal() {
 
   return (
     <>
-      <div style={{ width: '800px', margin: 'auto', marginTop: '30px' }}>
+      <div style={{ maxWidth: '800px', margin: 'auto', marginTop: '30px' }}>
         <Paper radius="md" withBorder className={classes.card} mt={20}>
           <ThemeIcon className={classes.icon} size={60} radius={60}>
             <GoGoal style={{ width: rem(32), height: rem(32) }} />

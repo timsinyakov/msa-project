@@ -17,7 +17,7 @@ export const theme = createTheme({
   components: {
     Button: Button.extend({
       defaultProps: {
-        color: 'primary',
+        color: 'custom',
         variant: 'filled',
       },
     }),

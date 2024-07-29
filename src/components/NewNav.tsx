@@ -17,6 +17,8 @@ import {
   rem,
   useMantineTheme,
   NavLink,
+  useMantineColorScheme,
+  useComputedColorScheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
@@ -31,6 +33,7 @@ import {
 import classes from './NewNav.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { FaMoon, FaSun } from 'react-icons/fa';
 
 const links = [
   { link: '/journal', label: 'journal' },
@@ -41,9 +44,16 @@ const links = [
 ];
 
 export function HeaderMegaMenu() {
+  const { setColorScheme } = useMantineColorScheme();
+
+  const theme = useComputedColorScheme('light');
+
+  const toggleColorScheme = () => {
+    setColorScheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const theme = useMantineTheme();
 
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
@@ -65,12 +75,31 @@ export function HeaderMegaMenu() {
   ));
 
   return (
-    <Box pb={120}>
+    <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
-          <Text component={Link} to="/" size="20px">
-            RUN JOURNAL
-          </Text>
+          <Group>
+            <Text component={Link} to="/" size="20px">
+              RUN JOURNAL
+            </Text>
+            <Button
+              variant="outline"
+              color={theme === 'dark' ? 'white' : 'black'}
+              onClick={toggleColorScheme}
+              style={{ color: theme === 'dark' ? 'white' : 'black' }}
+            >
+              {theme === 'dark' ? (
+                <>
+                  <FaSun />
+                </>
+              ) : (
+                <>
+                  <FaMoon />
+                </>
+              )}
+            </Button>
+          </Group>
+
           <Group h="100%" gap={0} visibleFrom="sm">
             {items}
           </Group>
