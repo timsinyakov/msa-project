@@ -13,6 +13,8 @@ import { Users } from './Models/Users';
 import Register from './components/Register';
 import { GoalView } from './components/GoalView';
 import { ViewGoalPage } from './pages/ViewGoalPage';
+import { HeaderMegaMenu, HeaderSimple } from './components/NewNav';
+import { RegisterPage } from './pages/Register';
 
 const router = createBrowserRouter([
   {
@@ -70,7 +72,12 @@ const router = createBrowserRouter([
   },
   {
     path: '/register',
-    element: <Register />,
+
+    element: <RegisterPage />,
+  },
+  {
+    path: '/na',
+    element: <HeaderMegaMenu />,
   },
 ]);
 

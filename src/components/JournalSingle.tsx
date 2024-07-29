@@ -84,7 +84,7 @@ export const SingleRun = ({
       >
         <FaRegTrashAlt size={20} />
       </Button>
-      <div style={{ marginLeft: '50px' }}>
+      <div style={{ marginLeft: '10%' }}>
         <Text size="xs" style={{ marginLeft: '5px' }}>
           {formattedDate}
         </Text>
@@ -103,7 +103,7 @@ export const SingleRun = ({
         {note && (
           <HoverCard shadow="md">
             <HoverCard.Target>
-              <Button radius={10} color="teal">
+              <Button color="teal" size="compact-xs">
                 See Note
               </Button>
             </HoverCard.Target>
@@ -111,30 +111,22 @@ export const SingleRun = ({
           </HoverCard>
         )}
       </div>
-      <Flex direction="column" gap="sm" style={{ marginRight: '50px' }}>
+      <Flex direction="column" gap="sm" style={{ marginRight: '3%' }}>
         <Group align="center" justify="space-between">
-          <Text fw={500} size="20px">
-            Enjoyment:
-          </Text>
-          <Rating value={enjoyment} size="lg" readOnly />
+          <Text fw={500}>Enjoyment:</Text>
+          <Rating value={enjoyment} readOnly />
         </Group>
         <Group align="center" justify="space-between">
-          <Text fw={500} size="20px">
-            Difficulty:
-          </Text>
-          <Rating value={difficulty} size="lg" readOnly />
+          <Text fw={100}>Difficulty:</Text>
+          <Rating value={difficulty} readOnly />
         </Group>
         <Group align="center" justify="space-between">
-          <Text fw={500} size="20px">
-            Pain:
-          </Text>
-          <Rating value={pain} size="lg" readOnly />
+          <Text fw={500}>Pain:</Text>
+          <Rating value={pain} readOnly />
         </Group>
         <Group align="center" justify="space-between">
-          <Text fw={500} size="20px">
-            Effort:
-          </Text>
-          <Rating value={effort} size="lg" readOnly />
+          <Text fw={500}>Effort:</Text>
+          <Rating value={effort} readOnly />
         </Group>
       </Flex>
     </Flex>
