@@ -8,6 +8,7 @@ import {
   Rating,
   Center,
   Button,
+  Paper,
 } from '@mantine/core';
 import classes from './NewSingleRun.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -84,14 +85,16 @@ export const NewSingleRun = ({
   ));
 
   const feedbackItems = feedback.map((feedback) => (
-    <div key={feedback.title}>
-      <Stack align="center" justify="center" gap="xs">
-        <Text size="xs" color="dimmed">
-          {feedback.title}
-        </Text>
-        <Rating value={feedback.value} readOnly />
-      </Stack>
-    </div>
+    <Paper radius="sm" style={{ padding: '3px' }} className={classes.paper}>
+      <div key={feedback.title}>
+        <Stack align="center" justify="center" gap="xs">
+          <Text size="xs" color="dimmed">
+            {feedback.title}
+          </Text>
+          <Rating value={feedback.value} readOnly className={classes.rating} />
+        </Stack>
+      </div>
+    </Paper>
   ));
 
   return (

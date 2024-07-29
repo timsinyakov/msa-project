@@ -18,3 +18,15 @@
     var(--mantine-font-family);
   line-height: 1;
 }
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .rating {
+    padding-bottom: 10px;
+  }
+  .paper {
+    border: 1px solid var(--mantine-color-gray-2); /* Add border for mobile view */
+  }
+}
