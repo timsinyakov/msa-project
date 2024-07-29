@@ -77,7 +77,7 @@ export function HeaderMegaMenu() {
   return (
     <Box>
       <header className={classes.header}>
-        <Group justify="space-between" h="100%">
+        <Group justify="space-between" h="100%" style={{ maxWidth: '1000px', margin: 'auto' }}>
           <Group>
             <Text component={Link} to="/" size="20px">
               RUN JOURNAL
