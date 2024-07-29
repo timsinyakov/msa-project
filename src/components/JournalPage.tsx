@@ -17,6 +17,7 @@ import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
 import { SingleRun } from './JournalSingle';
+import { NewSingleRun } from './NewSingleRun';
 
 export function JournalPage() {
   const { userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
@@ -36,7 +37,7 @@ export function JournalPage() {
     <>
       <div className={styles.scroll}>
         {userRuns?.map((run, index) => (
-          <SingleRun
+          <NewSingleRun
             goal={userNow?.goal}
             key={index}
             time={run.time}
