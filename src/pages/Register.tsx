@@ -1,12 +1,15 @@
 import { Header } from '@/components/Header';
+import Login from '@/components/Login';
 import { Navbar } from '@/components/Nav';
 import { HeaderMegaMenu } from '@/components/NewNav';
-import { Users } from '@/components/Users';
+import Register from '@/components/Register';
 
-export function About() {
+export function RegisterPage() {
   return (
     <>
       <HeaderMegaMenu />
+
+      <Register />
     </>
   );
 }
