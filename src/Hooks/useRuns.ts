@@ -5,6 +5,8 @@ import {
   addRun as createRun,
   getRunsByUserUid,
   delRun as deleteRun,
+  getRunById as getIdRun,
+  editRunById,
 } from '../Services/RunService';
 
 export const useRuns = () => {
@@ -29,12 +31,30 @@ export const useRuns = () => {
     fetchRuns();
   }, []);
 
+  const getRunsById = async (id: number) => {
+    try {
+      const runFetch = await getIdRun(id);
+      return runFetch;
+    } catch (err) {
+      setError('Failed to fetch run');
+    }
+  };
+
   const getRunsByUser = async (uid: string) => {
     try {
       const runFetch = await getRunsByUserUid(uid);
       setUserRuns(runFetch);
     } catch (err) {
       setError('Failed to fetch run');
+    }
+  };
+
+  const editRun = async (run: Runs) => {
+    try {
+      const newRun = await editRunById(run);
+      setRun((prevRuns) => [...prevRuns, newRun]);
+    } catch (err) {
+      setError('Failed to edit run');
     }
   };
 
@@ -54,5 +74,16 @@ export const useRuns = () => {
       setError('couuludnt delete');
     }
   };
-  return { run, loading, error, addRun, useRuns, getRunsByUser, userRuns, delRun };
+  return {
+    run,
+    loading,
+    error,
+    addRun,
+    useRuns,
+    getRunsByUser,
+    userRuns,
+    delRun,
+    getRunsById,
+    editRun,
+  };
 };

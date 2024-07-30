@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using RunJournal.Data;
 using RunJournal.Entities;
+using Microsoft.Extensions.Logging;
+
 namespace RunJournal.Controllers
 {
 
@@ -12,10 +14,13 @@ namespace RunJournal.Controllers
     {
 
         private readonly DataContext _context;
+        private readonly ILogger<RunController> _logger;
 
-        public RunController(DataContext context)
+
+        public RunController(DataContext context, ILogger<RunController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -58,10 +63,11 @@ namespace RunJournal.Controllers
         public async Task<ActionResult<List<Run>>> UpdateRun(Run updatedRun)
         {
             var dbRun = await _context.Runs.FindAsync(updatedRun.Id);
-            if (dbRun == null)
+            if (dbRun is null)
             {
-                return NotFound("Run not found.");
+                return NotFound("User not found.");
             }
+            _logger.LogInformation("Updating run with ID {Id}", dbRun.Id);
 
             dbRun.Time = updatedRun.Time;
             dbRun.Enjoyment = updatedRun.Enjoyment;
@@ -69,14 +75,15 @@ namespace RunJournal.Controllers
             dbRun.Pain = updatedRun.Pain;
             dbRun.Effort = updatedRun.Effort;
             dbRun.Note = updatedRun.Note;
+            dbRun.Distance = updatedRun.Distance;
+            dbRun.Date = updatedRun.Date;
+            dbRun.UserUID = updatedRun.UserUID;
 
-            // Ensure the Date property is updated correctly
-            if (updatedRun.Date != DateTime.MinValue)
-            {
-                dbRun.Date = updatedRun.Date;
-            }
 
             await _context.SaveChangesAsync();
+
+
+
             return Ok(await _context.Runs.ToListAsync());
         }
 

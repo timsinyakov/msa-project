@@ -10,14 +10,18 @@ import {
   Textarea,
 } from '@mantine/core';
 import { number } from 'prop-types';
-import { useContext, useState } from 'react';
-import styles from './Run.module.css';
+import { useContext, useEffect, useState } from 'react';
+import styles from './EditRun.module.css';
 import { eventMap } from '@testing-library/user-event/dist/types/event/eventMap';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Runs } from '@/Models/Runs';
 
-export function Demo() {
-  const { addRun } = useRuns();
+export function EditRun() {
+  const navigate = useNavigate();
+  const { runId } = useParams();
+  const { addRun, getRunsById, editRun } = useRuns();
 
   const [enjoyment, setEnjoyment] = useState(0);
   const [difficulty, setDifficulty] = useState(0);
@@ -26,16 +30,40 @@ export function Demo() {
   const [time, setTime] = useState(0);
   const [distance, setDistance] = useState(0);
   const [note, setNote] = useState('');
-
+  const [currentRun, setCurrentRun] = useState<Runs[] | undefined>();
+  const [date, setDate] = useState();
   const userNow = useContext(UserContext);
+  const [idNow, setIdNow] = useState();
+  const [userId, setUserId] = useState();
+  useEffect(() => {
+    const fetchRuns = async () => {
+      if (runId) {
+        const run = await getRunsById(parseInt(runId));
+        console.log(run);
+        setCurrentRun(run);
+        setDistance(run.distance);
+        setTime(run.time);
+        setEnjoyment(run.enjoyment);
+        setDifficulty(run.difficulty);
+        setEffort(run.effort);
+        setPain(run.pain);
+        setNote(run.note);
+        setDate(run.date);
+        setIdNow(run.id);
+        setUserId(run.userUID);
+      }
+    };
+
+    fetchRuns();
+  }, [userNow?.userUID]);
 
   const handeById = async () => {
     event?.preventDefault();
     console.log('hi');
     // Assuming addRun expects an object with these properties
-    const a = await addRun({
-      id: 0,
-      userUID: userNow?.userUID,
+    const a = await editRun({
+      id: idNow,
+      userUID: userId,
       time: time,
       enjoyment: enjoyment,
       difficulty: difficulty,
@@ -43,16 +71,17 @@ export function Demo() {
       effort: effort,
       distance: distance,
       note: note,
-      date: undefined,
+      date: date,
     });
 
     console.log(a);
+    navigate('/journal');
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <form onSubmit={handeById} style={{ marginTop: '70px', width: '500px' }}>
-        <Fieldset legend="New Run" radius={10}>
+        <Fieldset legend={'Run ' + runId} radius={10}>
           <NumberInput
             hideControls
             label="Distance:"
@@ -101,6 +130,7 @@ export function Demo() {
             autosize
             maxLength={255}
             label="Notes"
+            value={note}
             description="Displayed in journal"
             placeholder="Great run but long"
             onChange={(event) => setNote(event.currentTarget.value)}
@@ -108,7 +138,7 @@ export function Demo() {
         </Fieldset>
 
         <Group justify="center" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Save</Button>
         </Group>
       </form>
     </div>

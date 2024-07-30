@@ -15,6 +15,8 @@ import { GoalView } from './components/GoalView';
 import { ViewGoalPage } from './pages/ViewGoalPage';
 import { HeaderMegaMenu, HeaderSimple } from './components/NewNav';
 import { RegisterPage } from './pages/Register';
+import { EditRun } from './components/EditRun';
+import { EditPage } from './pages/EditPage';
 
 const router = createBrowserRouter([
   {
@@ -78,6 +80,10 @@ const router = createBrowserRouter([
   {
     path: '/na',
     element: <HeaderMegaMenu />,
+  },
+  {
+    path: '/edit/:runId',
+    element: <EditPage />,
   },
 ]);
 

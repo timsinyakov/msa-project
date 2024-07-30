@@ -8,6 +8,11 @@ export const getRuns = async (): Promise<Runs[]> => {
   const data = await response.json();
   return data;
 };
+export const getRunById = async (id: number): Promise<Runs[]> => {
+  const response = await fetch(`${apiUrl}/Run/${id}`);
+  const data = await response.json();
+  return data;
+};
 
 export const getRunsByUserUid = async (uid: string): Promise<Runs[]> => {
   const response = await fetch(`${apiUrl}/Run/user${uid}`);
@@ -23,6 +28,25 @@ export const addRun = async (run: Runs): Promise<Runs> => {
     },
     body: JSON.stringify(run),
   });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const editRunById = async (run: Runs): Promise<Runs> => {
+  const response = await fetch(`${apiUrl}/Run`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(run),
+  });
+
+  console.log(run);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
