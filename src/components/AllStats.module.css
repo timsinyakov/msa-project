@@ -1,6 +1,7 @@
 .root {
   padding: calc(var(--mantine-spacing-xl) * 1.5);
-  max-width: 1000px;
+  max-width: 1200px;
+  max-height: 1300px;
   margin: auto;
 }
 

@@ -100,16 +100,6 @@ export const SingleRun = ({
           {speed}
         </Text>
         <Space h="xs" />
-        {note && (
-          <HoverCard shadow="md">
-            <HoverCard.Target>
-              <Button color="teal" size="compact-xs">
-                See Note
-              </Button>
-            </HoverCard.Target>
-            <HoverCard.Dropdown>{note}</HoverCard.Dropdown>
-          </HoverCard>
-        )}
       </div>
       <Flex direction="column" gap="sm" style={{ marginRight: '3%' }}>
         <Group align="center" justify="space-between">

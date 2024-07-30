@@ -112,11 +112,11 @@ export function HeaderMegaMenu() {
             </Button>
           </Group>
 
-          <Group h="100%" gap={0} visibleFrom="md">
+          <Group h="100%" gap={0} visibleFrom="lg">
             {items}
           </Group>
 
-          <Group visibleFrom="md" style={{ width: '350px' }}>
+          <Group visibleFrom="lg" style={{ width: '350px' }}>
             <Button variant="default" component={Link} to="/login">
               Login
             </Button>
@@ -128,7 +128,7 @@ export function HeaderMegaMenu() {
             </Button>
           </Group>
 
-          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" />
+          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="lg" />
         </Group>
       </header>
 
@@ -138,7 +138,7 @@ export function HeaderMegaMenu() {
         size="100%"
         padding="md"
         title="Navigation"
-        hiddenFrom="md"
+        hiddenFrom="lg"
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">

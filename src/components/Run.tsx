@@ -78,22 +78,22 @@ export function Demo() {
           <br></br>
           <Group justify="space-between">
             Enjoyment
-            <Rating defaultValue={2} value={enjoyment} onChange={setEnjoyment} />
+            <Rating defaultValue={2} value={enjoyment} onChange={setEnjoyment} size="lg" />
           </Group>
 
           <Group justify="space-between">
             Difficulty
-            <Rating defaultValue={2} value={difficulty} onChange={setDifficulty} />
+            <Rating defaultValue={2} value={difficulty} onChange={setDifficulty} size="lg" />
           </Group>
 
           <Group justify="space-between">
             Effort
-            <Rating defaultValue={2} value={effort} onChange={setEffort} />
+            <Rating defaultValue={2} value={effort} onChange={setEffort} size="lg" />
           </Group>
 
           <Group justify="space-between">
             Pain
-            <Rating defaultValue={2} value={pain} onChange={setPain} />
+            <Rating defaultValue={2} value={pain} onChange={setPain} size="lg" />
           </Group>
 
           <Textarea

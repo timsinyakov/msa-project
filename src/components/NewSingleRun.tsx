@@ -9,10 +9,13 @@ import {
   Center,
   Button,
   Paper,
+  HoverCard,
+  Tooltip,
 } from '@mantine/core';
 import classes from './NewSingleRun.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useRuns } from '@/Hooks/useRuns';
+import { FaBookOpen } from 'react-icons/fa';
 
 interface NewSingleRunProps {
   time: number;
@@ -98,10 +101,24 @@ export const NewSingleRun = ({
   return (
     <Card withBorder padding="lg" className={classes.card}>
       <Card.Section className={classes.footer}>
-        <Button variant="light" onClick={handleDelete}>
-          <FaRegTrashAlt size={20} />
-        </Button>
-        <Text>{formattedDate.toString()}</Text>
+        <Group>
+          <Tooltip label="Delete">
+            <Button variant="light" onClick={handleDelete}>
+              <FaRegTrashAlt size={20} />
+            </Button>
+          </Tooltip>
+        </Group>
+
+        {note && (
+          <HoverCard closeDelay={0}>
+            <HoverCard.Target>
+              <Button variant="light">
+                <FaBookOpen />
+              </Button>
+            </HoverCard.Target>
+            <HoverCard.Dropdown className={classes.note}>{note}</HoverCard.Dropdown>
+          </HoverCard>
+        )}
       </Card.Section>
 
       <Card.Section className={classes.footer}>{feedbackItems}</Card.Section>

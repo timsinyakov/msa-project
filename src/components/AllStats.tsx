@@ -99,11 +99,10 @@ export function AllStats() {
       diff: ((averageSpeed / averageSpeedTwo) * 100).toFixed(2),
     },
     { title: 'Total Runs', icon: 'user', value: amountRuns, diff: amountRuns - amountRunsTwo },
+    { title: 'Average Distance', value: totalUserDis / amountRuns + ' km' },
   ];
 
   const stats = data.map((stat) => {
-    const DiffIcon = stat.diff > 0 ? IconArrowUpRight : IconArrowDownRight;
-
     return (
       <Paper withBorder p="md" radius="md" key={stat.title}>
         <Group justify="space-between">
@@ -111,24 +110,15 @@ export function AllStats() {
             {stat.title}
           </Text>
         </Group>
-
         <Group align="flex-end" gap="xs" mt={25}>
           <Text className={classes.value}>{stat.value}</Text>
-          <Text c={stat.diff > 0 ? 'teal' : 'red'} fz="sm" fw={500} className={classes.diff}>
-            <span>{stat.diff}</span>
-            <DiffIcon size="1rem" stroke={1.5} />
-          </Text>
         </Group>
-
-        <Text fz="xs" c="dimmed" mt={7}>
-          Compared to previous month
-        </Text>
       </Paper>
     );
   });
   return (
     <div className={classes.root}>
-      <SimpleGrid cols={{ base: 1, xs: 2, md: 3 }}>{stats}</SimpleGrid>
+      <SimpleGrid cols={{ base: 1, xs: 2, md: 2 }}>{stats}</SimpleGrid>
     </div>
   );
 }
