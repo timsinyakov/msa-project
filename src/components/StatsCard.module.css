@@ -1,5 +1,4 @@
 .card {
-  margin: auto;
   position: relative;
   overflow: visible;
   padding: var(--mantine-spacing-xl);

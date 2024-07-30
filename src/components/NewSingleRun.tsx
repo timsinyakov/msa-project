@@ -16,6 +16,8 @@ import classes from './NewSingleRun.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { useRuns } from '@/Hooks/useRuns';
 import { FaBookOpen } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 interface NewSingleRunProps {
   time: number;
@@ -54,6 +56,12 @@ export const NewSingleRun = ({
         onDelete();
       }
     });
+  };
+
+  const navigate = useNavigate();
+
+  const editRun = (runId: number) => {
+    navigate(`/edit/${runId}`);
   };
 
   console.log(enjoyment);
@@ -105,6 +113,11 @@ export const NewSingleRun = ({
           <Tooltip label="Delete">
             <Button variant="light" onClick={handleDelete}>
               <FaRegTrashAlt size={20} />
+            </Button>
+          </Tooltip>
+          <Tooltip label="Edit">
+            <Button variant="light" onClick={() => editRun(id)}>
+              <FaPencilAlt />
             </Button>
           </Tooltip>
         </Group>
