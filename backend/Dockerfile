@@ -9,10 +9,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["RunJournal/RunJournal.csproj", "RunJournal/"]
-RUN dotnet restore "./RunJournal/RunJournal.csproj"
-COPY . .
+COPY ["RunJournal.csproj", "RunJournal/"]
+RUN dotnet restore "RunJournal/RunJournal.csproj"
 WORKDIR "/src/RunJournal"
+COPY . .
 RUN dotnet build "./RunJournal.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
