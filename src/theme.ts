@@ -10,18 +10,18 @@ export const theme = createTheme({
 
     primary: virtualColor({
       name: 'primary',
-      dark: 'component',
+      dark: 'dimmed',
       light: 'black',
+    }),
+
+    dimmed: virtualColor({
+      name: 'dimmed',
+      dark: '#A9A9A9', // Dimmed color for dark mode
+      light: 'black', // Default color for light mode
     }),
   },
 
   components: {
-    Button: Button.extend({
-      defaultProps: {
-        color: 'dynamic',
-        variant: 'filled',
-      },
-    }),
     Text: {
       defaultProps: {
         color: 'primary',
@@ -30,7 +30,7 @@ export const theme = createTheme({
     },
     Rating: {
       defaultProps: {
-        color: 'primary',
+        color: 'yellow',
         variant: 'filled',
       },
     },

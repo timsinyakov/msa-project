@@ -60,7 +60,7 @@ export const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
         <TextInput
           label="Email"
-          placeholder="you@mantine.dev"
+          placeholder="you@email.com"
           required
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -72,12 +72,12 @@ export const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Text c="red">{error}</Text>
-        <Group justify="space-between" mt="lg">
+        {/*  <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />
           <Anchor component="button" size="sm">
             Forgot password?
           </Anchor>
-        </Group>
+        </Group>*/}
         <Button fullWidth mt="xl" onClick={() => login()}>
           Sign in
         </Button>

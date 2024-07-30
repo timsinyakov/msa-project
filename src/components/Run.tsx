@@ -51,7 +51,7 @@ export function Demo() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <form onSubmit={handeById} style={{ marginTop: '70px', width: '330px' }}>
+      <form onSubmit={handeById} style={{ marginTop: '70px', width: '500px' }} req>
         <Fieldset legend="New Run" radius={10}>
           <NumberInput
             hideControls
@@ -62,6 +62,7 @@ export function Demo() {
             allowNegative={false}
             value={distance}
             onChange={(value) => setDistance(Number(value))}
+            required
           />
           <NumberInput
             hideControls
@@ -72,6 +73,7 @@ export function Demo() {
             allowNegative={false}
             value={time}
             onChange={(value) => setTime(Number(value))}
+            required
           />
           <br></br>
           <Group justify="space-between">

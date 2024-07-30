@@ -33,7 +33,9 @@ import {
 import classes from './NewNav.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaRunning, FaSun } from 'react-icons/fa';
+import { LuDoorOpen } from 'react-icons/lu';
+import { getAuth, signOut } from 'firebase/auth';
 
 const links = [
   { link: '/journal', label: 'journal' },
@@ -74,11 +76,21 @@ export function HeaderMegaMenu() {
     </a>
   ));
 
+  const auth = getAuth();
+  const logout = () => {
+    const user = auth.currentUser;
+    if (user) {
+      console.log(user.email);
+    }
+
+    signOut(auth);
+  };
+
   return (
     <Box>
       <header className={classes.header}>
-        <Group justify="space-between" h="100%" style={{ maxWidth: '1000px', margin: 'auto' }}>
-          <Group>
+        <Group justify="space-between" h="100%" style={{ maxWidth: '1400px', margin: 'auto' }}>
+          <Group style={{ width: '350px' }}>
             <Text component={Link} to="/" size="20px">
               RUN JOURNAL
             </Text>
@@ -100,20 +112,23 @@ export function HeaderMegaMenu() {
             </Button>
           </Group>
 
-          <Group h="100%" gap={0} visibleFrom="sm">
+          <Group h="100%" gap={0} visibleFrom="md">
             {items}
           </Group>
 
-          <Group visibleFrom="sm">
+          <Group visibleFrom="md" style={{ width: '350px' }}>
             <Button variant="default" component={Link} to="/login">
               Login
             </Button>
             <Button variant="default" component={Link} to="/register">
               Register
             </Button>
+            <Button onClick={() => logout()}>
+              <LuDoorOpen />
+            </Button>
           </Group>
 
-          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
+          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="md" />
         </Group>
       </header>
 
@@ -123,7 +138,7 @@ export function HeaderMegaMenu() {
         size="100%"
         padding="md"
         title="Navigation"
-        hiddenFrom="sm"
+        hiddenFrom="md"
         zIndex={1000000}
       >
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
@@ -139,6 +154,9 @@ export function HeaderMegaMenu() {
             </Button>
             <Button variant="default" component={Link} to="/register">
               Register
+            </Button>
+            <Button onClick={() => logout()}>
+              <LuDoorOpen />
             </Button>
           </Group>
         </ScrollArea>

@@ -5,7 +5,6 @@ import {
   Card,
   Center,
   Group,
-  ScrollArea,
   SimpleGrid,
   Slider,
   Stack,

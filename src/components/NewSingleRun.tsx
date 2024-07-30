@@ -74,23 +74,21 @@ export const NewSingleRun = ({
   ];
 
   const items = stats.map((stat) => (
-    <div key={stat.title}>
-      <Text size="xs" color="dimmed">
-        {stat.title}
-      </Text>
-      <Text fw={500} size="sm">
-        {stat.value}
-      </Text>
-    </div>
+    <Center>
+      <div key={stat.title}>
+        <Text size="xs">{stat.title}</Text>
+        <Text fw={500} size="sm">
+          {stat.value}
+        </Text>
+      </div>
+    </Center>
   ));
 
   const feedbackItems = feedback.map((feedback) => (
     <Paper radius="sm" style={{ padding: '3px' }} className={classes.paper}>
       <div key={feedback.title}>
         <Stack align="center" justify="center" gap="xs">
-          <Text size="xs" color="dimmed">
-            {feedback.title}
-          </Text>
+          <Text size="xs">{feedback.title}</Text>
           <Rating value={feedback.value} readOnly className={classes.rating} size="lg" />
         </Stack>
       </div>
