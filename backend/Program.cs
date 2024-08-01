@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer("Server=100.110.227.10;Database=RunJournalDb;User Id=timsuh;Password=tim;TrustServerCertificate=True;");
+    options.UseSqlServer("Server=100.96.118.86;Database=RunJournalDb;User Id=timsuh;Password=tim;TrustServerCertificate=True;");
 });
 
 builder.Services.AddCors(options =>
@@ -53,4 +53,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Run(); // Specify the URL to listen on
