@@ -1,7 +1,7 @@
 import { Runs } from '../Models/Runs';
 import config from '../Config';
 
-const apiUrl = 'https://localhost:7034/api';
+const apiUrl = 'http://localhost:8080/api';
 
 export const getRuns = async (): Promise<Runs[]> => {
   const response = await fetch(`${apiUrl}/Run/`);
