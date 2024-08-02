@@ -113,7 +113,7 @@ export function HeaderMegaMenu() {
             </Button>
           </Group>
 
-          <Group h="100%" gap={0} visibleFrom="lg" style={{ marginLeft: '70px' }}>
+          <Group h="100%" gap={0} visibleFrom="lg" style={{ marginLeft: '85px' }}>
             {items}
           </Group>
 

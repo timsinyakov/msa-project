@@ -8,5 +8,5 @@ export interface Runs {
   pain: number;
   effort: number;
   note: string;
-  date: Date | null;
+  date: Date | null | undefined;
 }

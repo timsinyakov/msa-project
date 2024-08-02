@@ -1,7 +1,8 @@
 FROM node:18-alpine
 
 WORKDIR /app
-
+EXPOSE 80
+EXPOSE 443
 COPY package.json package-lock.json ./
 
 RUN npm install
@@ -12,6 +13,7 @@ COPY . .
 
 RUN npm run build --verbose
 
-EXPOSE 80
+
+
 
 CMD ["serve", "-s", "dist"]

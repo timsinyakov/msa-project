@@ -52,7 +52,7 @@ export function JournalPage() {
             pain={run.pain}
             effort={run.effort}
             note={run.note}
-            date={run.date}
+            date={run.date || null} // Provide a default value of null for the date prop
             id={run.id}
             onDelete={onDelete} // Pass the delete handler to SingleRun
           />

@@ -22,6 +22,7 @@ import { useRuns } from '@/Hooks/useRuns';
 import { FaBookOpen } from 'react-icons/fa';
 import { FaPencilAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { CiCircleInfo } from 'react-icons/ci';
 
 interface NewSingleRunProps {
   time: number;
@@ -94,12 +95,14 @@ export const NewSingleRun = ({
   ];
 
   const items = stats.map((stat) => (
-    <div key={stat.title}>
-      <Text size="24px" fw={700}>
-        {stat.title}
-      </Text>
-      <Text size="sm">{stat.value}</Text>
-    </div>
+    <Group>
+      <div key={stat.title}>
+        <Text size="24px" fw={700}>
+          {stat.title}
+        </Text>
+        <Text size="sm">{stat.value}</Text>
+      </div>
+    </Group>
   ));
 
   const feedbackItems = feedback.map((feedback) => (
@@ -129,18 +132,18 @@ export const NewSingleRun = ({
               <FaPencilAlt />
             </Button>
           </Tooltip>
-        </Group>
 
-        {note && (
-          <HoverCard closeDelay={0}>
-            <HoverCard.Target>
-              <Button variant="light" aria-label="View Note">
-                <FaBookOpen />
-              </Button>
-            </HoverCard.Target>
-            <HoverCard.Dropdown className={classes.note}>{note}</HoverCard.Dropdown>
-          </HoverCard>
-        )}
+          {note && (
+            <HoverCard closeDelay={0}>
+              <HoverCard.Target>
+                <Button variant="light" aria-label="View Note">
+                  <FaBookOpen size={20} />
+                </Button>
+              </HoverCard.Target>
+              <HoverCard.Dropdown className={classes.note}>{note}</HoverCard.Dropdown>
+            </HoverCard>
+          )}
+        </Group>
       </Card.Section>
 
       <Card.Section className={classes.footer}>{feedbackItems}</Card.Section>

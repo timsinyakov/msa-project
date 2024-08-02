@@ -99,7 +99,7 @@ export function AllStats() {
       diff: ((averageSpeed / averageSpeedTwo) * 100).toFixed(2),
     },
     { title: 'Total Runs', icon: 'user', value: amountRuns, diff: amountRuns - amountRunsTwo },
-    { title: 'Average Distance', value: totalUserDis / amountRuns + ' km' },
+    { title: 'Average Distance', value: (totalUserDis / amountRuns).toFixed(0) + ' km' },
   ];
 
   const stats = data.map((stat) => {
