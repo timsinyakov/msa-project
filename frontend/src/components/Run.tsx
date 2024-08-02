@@ -100,7 +100,7 @@ export function Demo() {
             maxLength={255}
             label="Notes"
             description="Displayed in journal"
-            placeholder="Great run but long"
+            placeholder="Great run!"
             onChange={(event) => setNote(event.currentTarget.value)}
           />
         </Fieldset>

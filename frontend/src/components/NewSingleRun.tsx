@@ -53,7 +53,6 @@ export const NewSingleRun = ({
   id,
   onDelete,
 }: NewSingleRunProps) => {
-
   const { delRun } = useRuns();
 
   const handleDelete = () => {
@@ -70,7 +69,6 @@ export const NewSingleRun = ({
     navigate(`/edit/${runId}`);
   };
 
-  console.log(enjoyment);
   const avgSpeed = (distance / time).toFixed(2);
   const avgSpeedValue = isNaN(Number(avgSpeed)) ? '0 km/hr' : avgSpeed + ' km/hr';
 
@@ -93,9 +91,9 @@ export const NewSingleRun = ({
     { title: 'Pain', value: pain },
   ];
 
-  const items = stats.map((stat) => (
+  const items = stats.map((stat, index) => (
     <Group>
-      <div key={stat.title}>
+      <div>
         <Text size="24px" fw={700}>
           {stat.title}
         </Text>
@@ -104,10 +102,10 @@ export const NewSingleRun = ({
     </Group>
   ));
 
-  const feedbackItems = feedback.map((feedback) => (
+  const feedbackItems = feedback.map((feedback, index) => (
     <Paper radius="sm" style={{ padding: '3px' }} className={classes.paper}>
-      <div key={feedback.title}>
-        <Stack align="center" justify="center" gap="xs">
+      <div key={index}>
+        <Stack align="center" justify="center" gap="xs" key={index}>
           <Text size="lg" fw={700} className={classes.textC}>
             {feedback.title}
           </Text>

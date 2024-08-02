@@ -79,9 +79,6 @@ export function HeaderMegaMenu() {
   const auth = getAuth();
   const logout = () => {
     const user = auth.currentUser;
-    if (user) {
-      console.log(user.email);
-    }
 
     signOut(auth);
   };

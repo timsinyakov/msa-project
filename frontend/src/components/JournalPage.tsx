@@ -1,24 +1,12 @@
-import { Runs } from '@/Models/Runs';
-import {
-  Avatar,
-  Button,
-  Card,
-  Center,
-  Group,
-  SimpleGrid,
-  Slider,
-  Stack,
-  Text,
-} from '@mantine/core';
 import { useContext, useEffect, useState } from 'react';
 import styles from './JournalPage.module.css';
-import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
 import { NewSingleRun } from './NewSingleRun';
+import { Loader } from '@mantine/core';
 
 export function JournalPage() {
-  const { userRuns, getRunsByUser } = useRuns(); // Assuming useRuns returns these
+  const { userRuns, getRunsByUser } = useRuns();
   const userNow = useContext(UserContext);
   const [deletionCount, setDeletionCount] = useState(0);
 
@@ -32,12 +20,22 @@ export function JournalPage() {
     setDeletionCount((prevCount) => prevCount + 1);
   };
 
+  if (!userRuns || userRuns.length === 0) {
+    return (
+      <div
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}
+      >
+        <Loader color="blue" type="dots" />
+      </div>
+    );
+  }
+
   return (
     <>
       <div className={styles.scroll}>
         {userRuns?.map((run, index) => (
           <NewSingleRun
-            goal={userNow?.goal || 0} // Provide a default value of 0 for the goal prop
+            goal={userNow?.goal || 0}
             key={index}
             time={run.time}
             distance={run.distance}
@@ -51,9 +49,9 @@ export function JournalPage() {
             pain={run.pain}
             effort={run.effort}
             note={run.note}
-            date={run.date || null} // Provide a default value of null for the date prop
+            date={run.date || null}
             id={run.id}
-            onDelete={onDelete} // Pass the delete handler to SingleRun
+            onDelete={onDelete}
           />
         ))}
       </div>
