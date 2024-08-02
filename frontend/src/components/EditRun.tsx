@@ -76,8 +76,8 @@ export function EditRun() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <form onSubmit={handeById} style={{ marginTop: '70px', maxWidth: '500px' }}>
-        <Fieldset legend={'Run ' + runId} radius={10}>
+      <form onSubmit={handeById} style={{ marginTop: '70px' }}>
+        <Fieldset legend="New Run" radius={10} className={styles.test}>
           <NumberInput
             hideControls
             label="Distance:"

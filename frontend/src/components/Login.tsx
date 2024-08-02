@@ -68,12 +68,7 @@ export const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Text c="red">{error}</Text>
-        {/*  <Group justify="space-between" mt="lg">
-          <Checkbox label="Remember me" />
-          <Anchor component="button" size="sm">
-            Forgot password?
-          </Anchor>
-        </Group>*/}
+
         <Button fullWidth mt="xl" onClick={() => login()}>
           Sign in
         </Button>

@@ -88,25 +88,35 @@ export function AllStats() {
     {
       title: 'Total Distance',
       icon: 'receipt',
-      value: totalUserDis.toString() + ' km',
-      diff: totalUserDis - totalUserDisTwo,
+      value: (isNaN(totalUserDis) ? 0 : totalUserDis).toString() + ' km',
+      diff: isNaN(totalUserDis - totalUserDisTwo) ? 0 : totalUserDis - totalUserDisTwo,
     },
-
     {
       title: 'Average Speed',
       icon: 'discount',
-      value: averageSpeed.toFixed(2) + ' km/hr',
-      diff: ((averageSpeed / averageSpeedTwo) * 100).toFixed(2),
+      value: (isNaN(averageSpeed) ? 0 : averageSpeed).toFixed(2) + ' km/hr',
+      diff: isNaN((averageSpeed / averageSpeedTwo) * 100)
+        ? 0
+        : ((averageSpeed / averageSpeedTwo) * 100).toFixed(2),
     },
-    { title: 'Total Runs', icon: 'user', value: amountRuns, diff: amountRuns - amountRunsTwo },
-    { title: 'Average Distance', value: (totalUserDis / amountRuns).toFixed(0) + ' km' },
+    {
+      title: 'Total Runs',
+      icon: 'user',
+      value: isNaN(amountRuns) ? 0 : amountRuns,
+      diff: isNaN(amountRuns - amountRunsTwo) ? 0 : amountRuns - amountRunsTwo,
+    },
+    {
+      title: 'Average Distance',
+      value:
+        (isNaN(totalUserDis / amountRuns) ? 0 : (totalUserDis / amountRuns).toFixed(0)) + ' km',
+    },
   ];
 
   const stats = data.map((stat) => {
     return (
       <Paper withBorder p="md" radius="md" key={stat.title}>
         <Group justify="space-between">
-          <Text size="xs" className={classes.title}>
+          <Text size="xl" className={classes.title}>
             {stat.title}
           </Text>
         </Group>
