@@ -29,7 +29,6 @@ export function JournalPage() {
   }, [userNow?.userUID, deletionCount]);
 
   const onDelete = () => {
-    console.log('+1');
     setDeletionCount((prevCount) => prevCount + 1);
   };
 

@@ -33,7 +33,6 @@ export function GoalView() {
       oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
       const recentRuns = userRuns.filter((run) => run.date && new Date(run.date) >= oneWeekAgo);
-      console.log(recentRuns);
       const total = recentRuns.reduce((acc, run) => acc + run.distance, 0);
 
       setProgress(total);

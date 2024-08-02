@@ -53,7 +53,6 @@ export const NewSingleRun = ({
   id,
   onDelete,
 }: NewSingleRunProps) => {
-  const theme = useMantineColorScheme();
 
   const { delRun } = useRuns();
 

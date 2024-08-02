@@ -334,7 +334,6 @@ D:\github\msa-project\backend\bin\Debug\net8.0\System.Memory.Data.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\System.Runtime.Caching.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\System.Security.Permissions.dll
-D:\github\msa-project\backend\bin\Debug\net8.0\System.Text.Json.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\System.Windows.Extensions.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 D:\github\msa-project\backend\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll

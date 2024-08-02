@@ -39,7 +39,6 @@ export function EditRun() {
     const fetchRuns = async () => {
       if (runId) {
         const run = await getRunsById(parseInt(runId));
-        console.log(run);
         setCurrentRun(run);
         setDistance(run?.distance || 0);
         setTime(run?.time || 0);
@@ -59,7 +58,6 @@ export function EditRun() {
 
   const handeById = async () => {
     event?.preventDefault();
-    console.log('hi');
     // Assuming addRun expects an object with these properties
     const a = await editRun({
       id: idNow,
@@ -73,8 +71,6 @@ export function EditRun() {
       note: note,
       date: date,
     });
-
-    console.log(a);
     navigate('/journal');
   };
 

@@ -22,12 +22,9 @@ const AuthRoute: React.FunctionComponent<IAuthRouteProps> = (props) => {
       if (currentUser) {
         const a = await getUserByUID(currentUser.uid);
         setUserNow(a);
-        console.log(a);
         setUser(false);
-        console.log('logged in');
       } else {
         setUser(false);
-        console.log('unauthorized');
         navigate('/login');
       }
     });

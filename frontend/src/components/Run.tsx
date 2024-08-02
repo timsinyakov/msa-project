@@ -31,8 +31,6 @@ export function Demo() {
 
   const handeById = async () => {
     event?.preventDefault();
-    console.log('hi');
-    // Assuming addRun expects an object with these properties
     if (userNow) {
       const a = await addRun({
         id: 0,

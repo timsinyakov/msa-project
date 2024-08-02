@@ -37,7 +37,6 @@ export const Register: React.FunctionComponent<IRegisterPageProps> = (props) => 
         addUser({ Id: 0, userUID: userCredential.user.uid, goal: 0 });
       })
       .catch((error) => {
-        console.log(error);
         setAuthing(false);
       });
   };
