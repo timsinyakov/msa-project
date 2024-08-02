@@ -11,6 +11,10 @@ import {
   Paper,
   HoverCard,
   Tooltip,
+  useMantineColorScheme,
+  useComputedColorScheme,
+  Space,
+  Flex,
 } from '@mantine/core';
 import classes from './NewSingleRun.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -48,6 +52,8 @@ export const NewSingleRun = ({
   id,
   onDelete,
 }: NewSingleRunProps) => {
+  const theme = useMantineColorScheme();
+
   const { delRun } = useRuns();
 
   const handleDelete = () => {
@@ -65,6 +71,9 @@ export const NewSingleRun = ({
   };
 
   console.log(enjoyment);
+  const avgSpeed = (distance / time).toFixed(2);
+  const avgSpeedValue = isNaN(Number(avgSpeed)) ? '0 km/hr' : avgSpeed + ' km/hr';
+
   const formattedDate = new Date(date || '').toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
@@ -72,7 +81,7 @@ export const NewSingleRun = ({
   });
   const stats = [
     { title: 'Distance', value: distance.toString() + ' km' },
-    { title: 'Avg. speed', value: (distance / time).toFixed(2) + ' km/hr' },
+    { title: 'Avg. speed', value: avgSpeedValue },
     { title: 'Time', value: time.toString() + ' min' },
   ];
 
@@ -85,21 +94,21 @@ export const NewSingleRun = ({
   ];
 
   const items = stats.map((stat) => (
-    <Center>
-      <div key={stat.title}>
-        <Text size="xs">{stat.title}</Text>
-        <Text fw={500} size="sm">
-          {stat.value}
-        </Text>
-      </div>
-    </Center>
+    <div key={stat.title}>
+      <Text size="24px" fw={700}>
+        {stat.title}
+      </Text>
+      <Text size="sm">{stat.value}</Text>
+    </div>
   ));
 
   const feedbackItems = feedback.map((feedback) => (
     <Paper radius="sm" style={{ padding: '3px' }} className={classes.paper}>
       <div key={feedback.title}>
         <Stack align="center" justify="center" gap="xs">
-          <Text size="xs">{feedback.title}</Text>
+          <Text size="lg" fw={700} className={classes.textC}>
+            {feedback.title}
+          </Text>
           <Rating value={feedback.value} readOnly className={classes.rating} size="lg" />
         </Stack>
       </div>
@@ -110,13 +119,13 @@ export const NewSingleRun = ({
     <Card withBorder padding="lg" className={classes.card}>
       <Card.Section className={classes.footer}>
         <Group>
-          <Tooltip label="Delete">
-            <Button variant="light" onClick={handleDelete}>
+          <Tooltip label="Delete" position="bottom">
+            <Button variant="light" onClick={handleDelete} aria-label="Delete Run">
               <FaRegTrashAlt size={20} />
             </Button>
           </Tooltip>
-          <Tooltip label="Edit">
-            <Button variant="light" onClick={() => editRun(id)}>
+          <Tooltip label="Edit" position="bottom">
+            <Button variant="light" onClick={() => editRun(id)} aria-label="Edit Run">
               <FaPencilAlt />
             </Button>
           </Tooltip>
@@ -125,7 +134,7 @@ export const NewSingleRun = ({
         {note && (
           <HoverCard closeDelay={0}>
             <HoverCard.Target>
-              <Button variant="light">
+              <Button variant="light" aria-label="View Note">
                 <FaBookOpen />
               </Button>
             </HoverCard.Target>
@@ -136,7 +145,7 @@ export const NewSingleRun = ({
 
       <Card.Section className={classes.footer}>{feedbackItems}</Card.Section>
 
-      <Card.Section className={classes.footer}>{items}</Card.Section>
+      <Card.Section className={classes.itemsfooter}>{items}</Card.Section>
     </Card>
   );
 };

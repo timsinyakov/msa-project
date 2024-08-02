@@ -15,7 +15,6 @@ import styles from './JournalPage.module.css';
 import { use } from 'chai';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
-import { SingleRun } from './JournalSingle';
 import { NewSingleRun } from './NewSingleRun';
 
 export function JournalPage() {

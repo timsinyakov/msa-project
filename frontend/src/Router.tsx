@@ -21,7 +21,7 @@ import { EditPage } from './pages/EditPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <About />,
   },
   {
     path: '/run',

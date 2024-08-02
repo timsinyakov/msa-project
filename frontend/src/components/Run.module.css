@@ -2,3 +2,11 @@
   position: absolute;
   justify-content: space-between;
 }
+.test {
+  width: 500px;
+}
+@media (max-width: 600px) {
+  .test {
+    width: auto;
+  }
+}

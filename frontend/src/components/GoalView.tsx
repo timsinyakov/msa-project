@@ -65,17 +65,13 @@ export function GoalView() {
         <Text ta="center" fw={700} className={classes.title}>
           Running challenge
         </Text>
-        <Text c="dimmed" ta="center" fz="sm">
+        <Text ta="center" fz="sm">
           {userNow?.goal} km / week
         </Text>
 
         <Group justify="space-between" mt="xs">
-          <Text fz="sm" c="dimmed">
-            Progress
-          </Text>
-          <Text fz="sm" c="dimmed">
-            {percentage?.toFixed(2)}%
-          </Text>
+          <Text fz="sm">Progress</Text>
+          <Text fz="sm">{percentage?.toFixed(2)}%</Text>
         </Group>
         {progress !== undefined && <Progress value={percentage} mt={5} />}
 

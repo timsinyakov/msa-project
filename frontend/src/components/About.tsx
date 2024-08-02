@@ -16,19 +16,19 @@ const mockdata = [
   {
     title: 'Easy',
     description:
-      'This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit',
+      'Our app is user-friendly with an intuitive interface, making it easy for anyone to track runs and monitor progress effortlessly.',
     icon: IconGauge,
   },
   {
     title: 'Secure',
     description:
-      'People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma',
+      'Our app uses Firebase for secure authentication and data storage, ensuring your information is protected with industry-leading security measures.',
     icon: IconUser,
   },
   {
     title: 'Responsive',
     description:
-      'They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves',
+      'Our app is fully responsive, ensuring a seamless experience on both mobile and desktop devices. Enjoy consistent functionality and design, no matter where you use it.',
     icon: IconCookie,
   },
 ];
@@ -52,13 +52,7 @@ export function FeaturesCards() {
   ));
 
   return (
-    <Container size="lg" py="xl">
-      <Group justify="center">
-        <Badge variant="filled" size="lg">
-          Best company ever
-        </Badge>
-      </Group>
-
+    <Container size="lg">
       <Title order={2} className={classes.title} ta="center" mt="sm">
         Integrate effortlessly with any technology stack
       </Title>

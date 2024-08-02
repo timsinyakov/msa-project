@@ -23,4 +23,5 @@
 .title {
   font-weight: 700;
   text-transform: uppercase;
+  color: light-dark(var(--mantine-color-blue-filled), #ac58bd);
 }
