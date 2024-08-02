@@ -1,19 +1,18 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+
+
 COPY package.json package-lock.json ./
 
 RUN npm install
 
-RUN npm install -g serve
 
 COPY . .
 
-RUN npm run build --verbose
+RUN npm run build
+
+EXPOSE 3000
 
 
-
-
-CMD ["serve", "-s", "dist"]
+CMD ["npm", "run", "start"]
