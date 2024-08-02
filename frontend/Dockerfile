@@ -1,13 +1,17 @@
-FROM node:18 AS build
-WORKDIR /app
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install
-COPY . ./
-RUN npm run build
+FROM node:18-alpine
 
-# Step 2: Serve the application using Nginx
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+RUN npm install -g serve
+
+COPY . .
+
+RUN npm run build --verbose
+
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["serve", "-s", "dist"]
