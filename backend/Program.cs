@@ -12,9 +12,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer("Server=100.96.118.86;Database=RunJournalDb;User Id=timsuh;Password=tim;TrustServerCertificate=True;");
+    options.UseSqlServer(connectionString);
 });
 
 builder.Services.AddCors(options =>
@@ -22,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "http://localhost:4173", "http://localhost:3000")
+            policy.WithOrigins("http://localhost:5173", "http://localhost:4173", "http://localhost:3000", "https://frontendnew-acaqb7bqdne6hcha.eastus-01.azurewebsites.net")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
