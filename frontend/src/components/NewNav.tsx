@@ -90,7 +90,7 @@ export function HeaderMegaMenu() {
     <Box>
       <header className={classes.header}>
         <Group justify="space-between" h="100%" style={{ maxWidth: '1400px', margin: 'auto' }}>
-          <Group style={{ width: '350px' }}>
+          <Group className={classes.titleWidth}>
             <Text component={Link} to="/about" className={classes.testText}>
               RUN JOURNAL
             </Text>
@@ -113,7 +113,7 @@ export function HeaderMegaMenu() {
             </Button>
           </Group>
 
-          <Group h="100%" gap={0} visibleFrom="lg">
+          <Group h="100%" gap={0} visibleFrom="lg" style={{ marginLeft: '70px' }}>
             {items}
           </Group>
 
@@ -156,10 +156,10 @@ export function HeaderMegaMenu() {
 
           <Group justify="center" grow pb="xl" px="md">
             <Button variant="default" component={Link} to="/login" aria-label="Login">
-              Login
+              <Text size="18px">Login</Text>
             </Button>
             <Button variant="default" component={Link} to="/register" aria-label="Register">
-              Register
+              <Text size="18px">Register</Text>
             </Button>
             <Button onClick={() => logout()} aria-label="Logout">
               <LuDoorOpen />

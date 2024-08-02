@@ -51,8 +51,8 @@ export function Demo() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <form onSubmit={handeById} style={{ marginTop: '70px', width: '500px' }}>
-        <Fieldset legend="New Run" radius={10}>
+      <form onSubmit={handeById} style={{ marginTop: '70px' }}>
+        <Fieldset legend="New Run" radius={10} className={styles.test}>
           <NumberInput
             hideControls
             label="Distance:"
@@ -108,7 +108,9 @@ export function Demo() {
         </Fieldset>
 
         <Group justify="center" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" style={{ marginBottom: '50px' }}>
+            Submit
+          </Button>
         </Group>
       </form>
     </div>

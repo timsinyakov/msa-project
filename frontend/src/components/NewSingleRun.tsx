@@ -14,6 +14,7 @@ import {
   useMantineColorScheme,
   useComputedColorScheme,
   Space,
+  Flex,
 } from '@mantine/core';
 import classes from './NewSingleRun.module.css';
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -93,14 +94,12 @@ export const NewSingleRun = ({
   ];
 
   const items = stats.map((stat) => (
-    <Group>
-      <div key={stat.title}>
-        <Text size="24px" fw={700}>
-          {stat.title}
-        </Text>
-        <Text size="sm">{stat.value}</Text>
-      </div>
-    </Group>
+    <div key={stat.title}>
+      <Text size="24px" fw={700}>
+        {stat.title}
+      </Text>
+      <Text size="sm">{stat.value}</Text>
+    </div>
   ));
 
   const feedbackItems = feedback.map((feedback) => (
@@ -146,7 +145,7 @@ export const NewSingleRun = ({
 
       <Card.Section className={classes.footer}>{feedbackItems}</Card.Section>
 
-      <Card.Section className={classes.footer}>{items}</Card.Section>
+      <Card.Section className={classes.itemsfooter}>{items}</Card.Section>
     </Card>
   );
 };
