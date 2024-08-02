@@ -106,7 +106,7 @@ export function AllStats() {
     return (
       <Paper withBorder p="md" radius="md" key={stat.title}>
         <Group justify="space-between">
-          <Text size="xs" c="dimmed" className={classes.title}>
+          <Text size="xs" className={classes.title}>
             {stat.title}
           </Text>
         </Group>

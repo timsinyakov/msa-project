@@ -91,7 +91,7 @@ export function HeaderMegaMenu() {
       <header className={classes.header}>
         <Group justify="space-between" h="100%" style={{ maxWidth: '1400px', margin: 'auto' }}>
           <Group style={{ width: '350px' }}>
-            <Text component={Link} to="/" size="20px">
+            <Text component={Link} to="/about" className={classes.testText}>
               RUN JOURNAL
             </Text>
             <Button
@@ -99,6 +99,7 @@ export function HeaderMegaMenu() {
               color={theme === 'dark' ? 'white' : 'black'}
               onClick={toggleColorScheme}
               style={{ color: theme === 'dark' ? 'white' : 'black' }}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark' ? (
                 <>
@@ -117,18 +118,23 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group visibleFrom="lg" style={{ width: '350px' }}>
-            <Button variant="default" component={Link} to="/login">
-              Login
+            <Button variant="default" component={Link} to="/login" aria-label="Login">
+              <Text className={classes.testText}>Login</Text>
             </Button>
-            <Button variant="default" component={Link} to="/register">
-              Register
+            <Button variant="default" component={Link} to="/register" aria-label="Register">
+              <Text className={classes.testText}>Register</Text>
             </Button>
-            <Button onClick={() => logout()}>
+            <Button onClick={() => logout()} aria-label="Logout">
               <LuDoorOpen />
             </Button>
           </Group>
 
-          <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="lg" />
+          <Burger
+            opened={drawerOpened}
+            onClick={toggleDrawer}
+            hiddenFrom="lg"
+            aria-label="Burger"
+          />
         </Group>
       </header>
 
@@ -149,13 +155,13 @@ export function HeaderMegaMenu() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default" component={Link} to="/login">
+            <Button variant="default" component={Link} to="/login" aria-label="Login">
               Login
             </Button>
-            <Button variant="default" component={Link} to="/register">
+            <Button variant="default" component={Link} to="/register" aria-label="Register">
               Register
             </Button>
-            <Button onClick={() => logout()}>
+            <Button onClick={() => logout()} aria-label="Logout">
               <LuDoorOpen />
             </Button>
           </Group>

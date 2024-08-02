@@ -21,10 +21,12 @@
     var(--mantine-font-family);
   line-height: 1;
 }
+.textC {
+  color: light-dark(var(--mantine-color-blue-filled), #ac58bd);
+}
 @media (max-width: 600px) {
   .footer {
     flex-direction: column;
-    align-items: center;
   }
   .rating {
     padding-bottom: 10px;

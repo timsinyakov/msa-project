@@ -19,24 +19,29 @@ export const theme = createTheme({
       dark: '#A9A9A9', // Dimmed color for dark mode
       light: 'black', // Default color for light mode
     }),
+    purpleButton: colorsTuple('139, 26, 161'),
+
+    buttonColor: virtualColor({
+      name: 'buttonColor',
+      dark: 'blue',
+      light: 'dark',
+    }),
   },
 
   components: {
     Text: {
       defaultProps: {
-        color: 'primary',
-        variant: 'filled',
+        color: 'light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0))',
       },
     },
     Rating: {
       defaultProps: {
         color: 'yellow',
-        variant: 'filled',
       },
     },
-    Link: {
+    Button: {
       defaultProps: {
-        color: 'custom',
+        color: 'buttonColor',
       },
     },
   },

@@ -24,3 +24,7 @@
     color: var(--mantine-color-white);
   }
 }
+.testText {
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  font-weight: 800;
+}
