@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "http://localhost:4173", "http://localhost:3000", "https://frontendnew-acaqb7bqdne6hcha.eastus-01.azurewebsites.net")
+            policy.WithOrigins("https://frontendnew-acaqb7bqdne6hcha.eastus-01.azurewebsites.net", "http://localhost:3000", "http://localhost:80")
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });

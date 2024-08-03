@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: 'https://backendapi2-d4abdtg4h5hvd3dc.eastus-01.azurewebsites.net/api',
+  apiUrl: 'http://localhost:8080/api',
 };
 
 export default config;
