@@ -28,14 +28,17 @@ I'm proud of implementing mantine in so many components because I never used rea
 
 ## Installation
 
+- preloaded account with runs
+  -username: msa@gmail.com || password: password
+
 ## Frontend
 
 - cd frontend
-- docker build -t appname .
-- docker run -p 3000:3000 appname
+- docker build -t frontendapp .
+- docker run -p 3000:3000 frontendapp
 
 ## Backend
 
 - cd backend
-- docker build -t appname .
-- dockker run -p 8080:8080 appname
+- docker build -t backendapi .
+- docker run -p 8080:8080 backendapi

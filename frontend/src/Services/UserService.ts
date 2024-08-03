@@ -39,8 +39,6 @@ export const updateUser = async (user: Users): Promise<Users[]> => {
 };
 
 export const createUser = async (user: Users): Promise<Users[]> => {
-  console.log("hello")
-
   const response = await fetch(`${apiUrl}/User`, {
     method: 'POST',
     headers: {
@@ -48,7 +46,6 @@ export const createUser = async (user: Users): Promise<Users[]> => {
     },
     body: JSON.stringify(user),
   });
-  
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -56,4 +53,4 @@ export const createUser = async (user: Users): Promise<Users[]> => {
 
   const data = await response.json();
   return data;
-}
+};
