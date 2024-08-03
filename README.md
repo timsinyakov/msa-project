@@ -32,7 +32,7 @@ I'm proud of implementing mantine in so many components because I never used rea
 
 - cd frontend
 - docker build -t appname .
-- docker run -p 80:80 appname
+- docker run -p 3000:3000 appname
 
 ## Backend
 
