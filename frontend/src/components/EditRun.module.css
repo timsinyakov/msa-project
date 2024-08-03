@@ -2,7 +2,7 @@
   position: absolute;
   justify-content: space-between;
 }
-.test {
+.desktopScale {
   width: 500px;
 }
 @media (max-width: 600px) {
