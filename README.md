@@ -5,7 +5,7 @@
 Run Journal is a responsive app designed for runners to log their runs, track progress and set a weekly goal. Additionaly, the user can
 rate their run using pain, effort, difficulty and enjoyment.
 
-I'm proud of implementing mantine in so many components because I never used react styling libraries before
+I'm most proud of implementing mantine in so many components because I never used react styling libraries before.
 
 ## Basic Features
 
@@ -24,7 +24,8 @@ I'm proud of implementing mantine in so many components because I never used rea
 
 - Dark/Light mode
 - Containerised project
-- Deployed on azure
+- [Deployed on azure](https://frontendnew-acaqb7bqdne6hcha.eastus-01.azurewebsites.net/)
+
 
 ## Installation
 

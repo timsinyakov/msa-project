@@ -27,9 +27,10 @@ export const Register: React.FunctionComponent<IRegisterPageProps> = (props) => 
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { addUser } = useUsers();
-
+  const[ errorMsg, setErrorMsg] = useState();
   const register = async () => {
     setAuthing(true);
+
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -37,6 +38,7 @@ export const Register: React.FunctionComponent<IRegisterPageProps> = (props) => 
         addUser({ Id: 0, userUID: userCredential.user.uid, goal: 0 });
       })
       .catch((error) => {
+        setErrorMsg(error.message);
         setAuthing(false);
       });
   };
@@ -67,6 +69,7 @@ export const Register: React.FunctionComponent<IRegisterPageProps> = (props) => 
           Register
         </Button>
       </Paper>
+      <Text>{errorMsg}</Text>
     </Container>
   );
 };

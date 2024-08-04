@@ -3,9 +3,13 @@ import styles from './JournalPage.module.css';
 import { useRuns } from '../Hooks/useRuns';
 import { UserContext } from './context/contextCreate';
 import { NewSingleRun } from './NewSingleRun';
-import { Loader } from '@mantine/core';
+import { Loader, Text } from '@mantine/core';
+import { Alert } from '@mantine/core';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 export function JournalPage() {
+  const icon = <IconInfoCircle />;
+
   const { userRuns, getRunsByUser } = useRuns();
   const userNow = useContext(UserContext);
   const [deletionCount, setDeletionCount] = useState(0);
@@ -20,7 +24,7 @@ export function JournalPage() {
     setDeletionCount((prevCount) => prevCount + 1);
   };
 
-  if (!userRuns || userRuns.length === 0) {
+  if (!userRuns) {
     return (
       <div
         style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}
@@ -28,7 +32,11 @@ export function JournalPage() {
         <Loader color="blue" type="dots" />
       </div>
     );
-  }
+  } if (userRuns.length === 0){
+    return (
+      <Alert variant="light" color="blue" title="No runs found" icon={icon} style={{maxWidth: '300px', margin: 'auto'}}>
+Please add a run      </Alert>
+    );  }
 
   return (
     <>
